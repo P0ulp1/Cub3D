@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/01/30 13:44:11 by phautena         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:46:40 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_textures
 	int		SO_fd;
 	int		WE_fd;
 	int		EA_fd;
+	//FLOOR RGB value;
+	//CEILING RGB value;
 }				t_textures;
 
 typedef struct	s_data
@@ -43,8 +45,8 @@ typedef struct	s_data
 	void		*win_ptr;
 	t_map		*map;
 	t_textures	*textures;
-	//Player struct
-	//DDA struct
+	//Player struct;
+	//DDA struct;
 }				t_data;
 
 #endif
