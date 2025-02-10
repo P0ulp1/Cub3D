@@ -1,64 +1,68 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: phautena <phautena@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/01/30 13:20:42 by phautena          #+#    #+#              #
-#    Updated: 2025/01/30 13:26:24 by phautena         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+GREEN	= \033[1;32m
+RED		= \033[0;31m
+BLUE	= \033[0;34m
+YELLOW	= \033[1;33m
+CYAN	= \033[0;36m
+RESET	= \033[0m
 
-NAME = cub3d
+NAME		=	cub3d
 
-CC = cc -Wall -Wextra -Werror -ggdb -I./minilibx-linux -I./includes
+CC			=	cc
 
-SRC_DIR = ./srcs/
+FLAG		=	-Wall -Werror -Wextra -g3 -fPIE -I./minilibx-linux -I./includes
 
-SRC_FILES = main.c
+LIBFT_PATH	=	./libft/
 
-SRC = ${addprefix ${SRC_DIR},${SRC_FILES}}
+LIBFT_FILE	=	libft.a
 
-OBJ = ${SRC:.c=.o}
+LIBFT_LIB	=	$(addprefix $(LIBFT_PATH), $(LIBFT_FILE))
 
-MLX_LIB = ./minilibx-linux/libmlx.a -lX11 -lXext
-LIBFT_LIB = ./Libft/libft.a
-FT_PRINTF_LIB = ./ft_printf/libftprintf.a
-GNL_LIB = ./get_next_line/gnl.a
+MLX_LIB 	=	./minilibx-linux/libmlx.a -lX11 -lXext
+
+C_FILE		=	main								\
+
+SRC_DIR		=	./srcs/
+
+SRC			=	$(addsuffix .c, $(addprefix $(SRC_DIR),$(C_FILE)))
+
+OBJ			=	$(SRC:.c=.o)
 
 .c.o:
-	${CC} -c $< -o $@
+	@$(CC) $(FLAG) -c $< -o $@
 
-all: ${NAME}
+all: $(NAME)
 
-${NAME}: ${MLX_LIB} ${LIBFT_LIB} ${FT_PRINTF_LIB} ${GNL_LIB} ${OBJ}
-	${CC} ${OBJ} ${LIBFT_LIB} ${FT_PRINTF_LIB} ${MLX_LIB} ${GNL_LIB} -o ${NAME}
+$(LIBFT_LIB):
+	@echo "$(BLUE)Compiling $(LIBFT_PATH)...$(RESET)"
+	@make -sC $(LIBFT_PATH)
+	@echo "$(GREEN)libft.a created$(RESET)"
+
+$(NAME): $(LIBFT_LIB) ${MLX_LIB} $(OBJ)
+	@echo "$(BLUE)Compiling $(NAME)...$(RESET)"
+	@$(CC) $(OBJ) $(LIBFT_LIB) ${MLX_LIB} $(FLAG) -o $(NAME)
+	@echo "$(GREEN)Executable $(NAME) created$(RESET)"
 
 ${MLX_LIB}:
-	${MAKE} -C ./minilibx-linux
-
-${LIBFT_LIB}:
-	${MAKE} -C ./Libft
-
-${FT_PRINTF_LIB}:
-	${MAKE} -C ./ft_printf
-
-${GNL_LIB}:
-	${MAKE} -C ./get_next_line
+	@echo "$(BLUE)Compiling MLX...$(RESET)"
+	@make -sC ./minilibx-linux
+	@echo "$(GREEN)MLX created$(RESET)"
 
 clean:
-	${MAKE} clean -C ./minilibx-linux/
-	${MAKE} clean -C ./Libft/
-	${MAKE} clean -C ./ft_printf/
-	${MAKE} clean -C ./get_next_line/
-	rm -f ${OBJ}
+	@echo "$(RED)Deleting object files in $(LIBFT_PATH)...$(RESET)"
+	@make clean -sC $(LIBFT_PATH)
+	@echo "$(GREEN)Done$(RESET)"
+	@echo "$(RED)Deleting object files in MLX...$(RESET)"
+	@make clean -sC ./minilibx-linux/
+	@echo "$(GREEN)Done$(RESET)"
+	@echo "$(RED)Deleting $(NAME) object files...$(RESET)"
+	@rm -f $(OBJ)
+	@echo "$(GREEN)Done$(RESET)"
 
 fclean: clean
-	rm -f ${NAME}
-	rm -f ./Libft/libft.a
-	rm -f ./ft_printf/libftprintf.a
-	rm -f ./get_next_line/gnl.a
+	@echo "$(RED)Deleting $(NAME) executable...$(RESET)"
+	@rm -f $(NAME)
+	@make fclean -sC $(LIBFT_PATH)
+	@echo "$(GREEN)Done$(RESET)"
 
 re: fclean all
 
