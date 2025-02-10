@@ -5,11 +5,11 @@ YELLOW	= \033[1;33m
 CYAN	= \033[0;36m
 RESET	= \033[0m
 
-NAME		=	cub3d
+NAME		=	cub3D
 
 CC			=	cc
 
-FLAG		=	-Wall -Werror -Wextra -g3 -fPIE -I./minilibx-linux -I./includes
+FLAG		=	-Wall -Werror -Wextra -g3 -I./minilibx-linux -I./includes
 
 LIBFT_PATH	=	./libft/
 
@@ -37,15 +37,15 @@ $(LIBFT_LIB):
 	@make -sC $(LIBFT_PATH)
 	@echo "$(GREEN)libft.a created$(RESET)"
 
-$(NAME): $(LIBFT_LIB) ${MLX_LIB} $(OBJ)
-	@echo "$(BLUE)Compiling $(NAME)...$(RESET)"
-	@$(CC) $(OBJ) $(LIBFT_LIB) ${MLX_LIB} $(FLAG) -o $(NAME)
-	@echo "$(GREEN)Executable $(NAME) created$(RESET)"
-
 ${MLX_LIB}:
 	@echo "$(BLUE)Compiling MLX...$(RESET)"
 	@make -sC ./minilibx-linux
 	@echo "$(GREEN)MLX created$(RESET)"
+
+$(NAME): $(LIBFT_LIB) ${MLX_LIB} $(OBJ)
+	@echo "$(BLUE)Compiling $(NAME)...$(RESET)"
+	@$(CC) $(OBJ) $(LIBFT_LIB) ${MLX_LIB} $(FLAG) -o $(NAME)
+	@echo "$(GREEN)Executable $(NAME) created$(RESET)"
 
 clean:
 	@echo "$(RED)Deleting object files in $(LIBFT_PATH)...$(RESET)"
