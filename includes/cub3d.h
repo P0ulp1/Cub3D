@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/12 16:25:49 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/12 21:31:12 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,41 +18,37 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-typedef struct s_map
+typedef struct s_scene
 {
-	char		*map_fil;
-	char		**map;
-	int			map_fd;
-}				t_map;
-
-typedef struct s_textures
-{
-	char		*NO_fil;
-	char		*SO_fil;
-	char		*WE_fil;
-	char		*EA_fil;
-	int			NO_fd;
-	int			SO_fd;
-	int			WE_fd;
-	int			EA_fd;
-	// FLOOR RGB value;
-	// CEILING RGB value;
-}				t_textures;
+	char	*north_texture;
+	char	*south_texture;
+	char	*west_texture;
+	char	*east_texture;
+	int		floor_color[3];
+	int		ceiling_color[3];
+	char	**map;
+}			t_scene;
 
 typedef struct s_data
 {
-	void		*mlx_ptr;
-	void		*win_ptr;
-	t_map		*map;
-	t_textures	*textures;
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_scene	*scene;
 	// Player struct;
 	// DDA struct;
-}				t_data;
+}			t_data;
 
 /// PARSING
-void			parsing(char *file, t_data *data);
+void		parsing(char *file, t_data *data);
+
+void		check_character(t_scene *scene);
+void		check_declarations(char **lines);
+void		check_wall(char **map);
+
+void		parse_map(char **lines, int start, t_scene *scene);
+void		parse_textures(char *line, t_scene *scene);
 
 /// FREE
-void			err_msg(char *str);
+void		err_msg(char *str);
 
 #endif

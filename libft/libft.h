@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 16:53:30 by alibaba           #+#    #+#             */
-/*   Updated: 2024/12/20 21:54:26 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/12 20:27:32 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_isspace(char c);
+int		ft_str_isspace(char *str);
 int		ft_isalpha_lower(int c);
 int		ft_isalpha_upper(int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);

@@ -19,9 +19,12 @@ LIBFT_LIB	=	$(addprefix $(LIBFT_PATH), $(LIBFT_FILE))
 
 MLX_LIB 	=	./minilibx-linux/libmlx.a -lX11 -lXext
 
-C_FILE		=	main								\
-				free								\
-				parsing								\
+C_FILE		=	main/main							\
+				main/free							\
+				parsing/parsing						\
+				parsing/parsing_utils				\
+				parsing/parsing_walls				\
+				parsing/parsing_checker				\
 
 SRC_DIR		=	./srcs/
 
@@ -68,4 +71,6 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+bonus: all
+
+.PHONY: all clean fclean re bonus

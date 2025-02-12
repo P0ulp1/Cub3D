@@ -53,6 +53,7 @@ C_FILE =	ft_printf			\
 			ft_strcat			\
 			ft_strcpy			\
 			ft_strtok			\
+			ft_str_isspace		\
 
 SRCS = $(addsuffix .c,$(C_FILE))
 
