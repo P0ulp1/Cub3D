@@ -20,6 +20,8 @@ LIBFT_LIB	=	$(addprefix $(LIBFT_PATH), $(LIBFT_FILE))
 MLX_LIB 	=	./minilibx-linux/libmlx.a -lX11 -lXext
 
 C_FILE		=	main								\
+				free								\
+				parsing								\
 
 SRC_DIR		=	./srcs/
 

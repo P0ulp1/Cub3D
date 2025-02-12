@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/10 15:26:00 by pbailly          ###   ########.fr       */
+/*   Updated: 2025/02/12 16:25:49 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
+# include <fcntl.h>
+# include <stdio.h>
 
 typedef struct s_map
 {
@@ -46,5 +48,11 @@ typedef struct s_data
 	// Player struct;
 	// DDA struct;
 }				t_data;
+
+/// PARSING
+void			parsing(char *file, t_data *data);
+
+/// FREE
+void			err_msg(char *str);
 
 #endif

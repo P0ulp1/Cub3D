@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 13:24:20 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/12 16:20:23 by alibabab         ###   ########.fr       */
+/*   Created: 2025/02/12 16:17:40 by alibabab          #+#    #+#             */
+/*   Updated: 2025/02/12 16:27:05 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	err_msg(char *str)
 {
-	t_data	data;
-
-	if (argc != 2)
-		err_msg("Need a map\n");
-	parsing(argv[1], &data);
-	return (0);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(str, 2);
+	exit(1);
 }
