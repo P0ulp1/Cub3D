@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:06:33 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 13:23:57 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:27:57 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,7 @@ static void	parse_scene(char *content, t_data *data)
 			break ;
 		}
 		else
-		{
 			parse_textures(lines[i], data);
-		}
 		free(lines[i]);
 		i++;
 	}

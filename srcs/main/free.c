@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:17:40 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 03:31:34 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:43:16 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	err_msg(char *str, t_data *data)
 {
-	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd("Error :\n", 2);
 	ft_putstr_fd(str, 2);
 	free_data(data);
 	exit(1);

@@ -26,6 +26,7 @@ C_FILE		=	main/main							\
 				parsing/parsing_utils				\
 				parsing/parsing_walls				\
 				parsing/parsing_checker				\
+				render/render						\
 
 SRC_DIR		=	./srcs/
 
