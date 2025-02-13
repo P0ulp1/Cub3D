@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/12 21:31:12 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 01:10:22 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include "../minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <stdio.h>
+
+# undef BUFFER_SIZE
+# define BUFFER_SIZE 4096
 
 typedef struct s_scene
 {

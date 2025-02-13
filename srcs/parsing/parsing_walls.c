@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:17:05 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/12 21:30:07 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 01:00:17 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	check_inner_walls(char **map)
 		j = 1;
 		while (j < (int)ft_strlen(map[i]) - 1)
 		{
-			if (map[i][j] != '1' && map[i][j] != ' ' && map[i][j] != '\t')
+			if (map[i][j] != '1' && !ft_isspace(map[i][j]))
 			{
 				if (ft_isspace(map[i - 1][j]) || ft_isspace(map[i + 1][j])
 					|| ft_isspace(map[i][j - 1]) || ft_isspace(map[i][j + 1]))

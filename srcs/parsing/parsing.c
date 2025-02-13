@@ -6,54 +6,54 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:06:33 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/12 22:04:00 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 01:14:10 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static char	*read_file(int fd)
+static void	read_and_join(int fd, char **content, char *buffer)
 {
-	char	*content;
-	char	*line;
-	size_t	total_size;
-	size_t	allocated_size;
-	char	*new_content;
-	size_t	line_len;
+	char	*tmp;
+	int		bytes_read;
 
-	total_size = 0;
-	allocated_size = 1024;
-	content = malloc(allocated_size);
-	if (!content)
-		err_msg("Memory allocation failed\n");
-	content[0] = '\0';
-	line = get_next_line(fd);
-	while (line != NULL)
+	bytes_read = read(fd, buffer, BUFFER_SIZE);
+	while (bytes_read > 0)
 	{
-		line_len = ft_strlen(line);
-		while (total_size + line_len + 1 > allocated_size)
+		buffer[bytes_read] = '\0';
+		tmp = ft_strjoin(*content, buffer);
+		free(*content);
+		if (!tmp)
 		{
-			allocated_size *= 2;
-			new_content = malloc(allocated_size);
-			if (!new_content)
-			{
-				free(content);
-				err_msg("Memory allocation failed\n");
-			}
-			ft_strcpy(new_content, content);
-			free(content);
-			content = new_content;
+			free(buffer);
+			err_msg("Memory allocation failed\n");
 		}
-		ft_strcat(content, line);
-		total_size += line_len;
-		free(line);
-		line = get_next_line(fd);
+		*content = tmp;
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
 	}
-	if (total_size == 0)
+	if (bytes_read < 0)
 	{
-		free(content);
-		err_msg("Failed to read file\n");
+		free(*content);
+		err_msg("Read error\n");
 	}
+}
+
+char	*read_file(int fd)
+{
+	char	*buffer;
+	char	*content;
+
+	buffer = malloc(BUFFER_SIZE + 1);
+	if (!buffer)
+		err_msg("Memory allocation failed\n");
+	content = ft_strdup("");
+	if (!content)
+	{
+		free(buffer);
+		err_msg("Memory allocation failed\n");
+	}
+	read_and_join(fd, &content, buffer);
+	free(buffer);
 	return (content);
 }
 
