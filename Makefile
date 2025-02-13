@@ -21,6 +21,7 @@ MLX_LIB 	=	./minilibx-linux/libmlx.a -lX11 -lXext
 
 C_FILE		=	main/main							\
 				main/free							\
+				main/exit							\
 				parsing/init_parsing				\
 				parsing/parsing						\
 				parsing/parsing_utils				\

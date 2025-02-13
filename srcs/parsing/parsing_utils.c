@@ -6,13 +6,13 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:21:46 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 03:35:15 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:54:11 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	parse_color(char *line, int *color, t_data *data)
+static void	parse_color(char *line, int *color, t_data *data, char **to_free)
 {
 	char	**str;
 	int		i;
@@ -23,23 +23,22 @@ static void	parse_color(char *line, int *color, t_data *data)
 	color[0] = ft_atoi(str[0]);
 	color[1] = ft_atoi(str[1]);
 	color[2] = ft_atoi(str[2]);
-	i = 0;
-	while (str[i])
-	{
+	i = -1;
+	while (str[++i])
 		free(str[i]);
-		i++;
-	}
 	free(str);
-	i = 0;
-	while (i < 3)
+	i = -1;
+	while (++i < 3)
 	{
 		if (color[i] < 0 || color[i] > 255)
+		{
+			free_split(to_free);
 			err_msg("Color values must be between 0 and 255\n", data);
-		i++;
+		}
 	}
 }
 
-void	parse_textures(char *line, t_data *data)
+void	parse_textures(char *line, t_data *data, char **to_free)
 {
 	while (ft_isspace(*line))
 		line++;
@@ -52,9 +51,9 @@ void	parse_textures(char *line, t_data *data)
 	else if (ft_strncmp(line, "EA ", 3) == 0)
 		data->scene->east_texture = ft_strdup(line + 3);
 	else if (ft_strncmp(line, "F ", 2) == 0)
-		parse_color(line + 2, data->scene->floor_color, data);
+		parse_color(line + 2, data->scene->floor_color, data, to_free);
 	else if (ft_strncmp(line, "C ", 2) == 0)
-		parse_color(line + 2, data->scene->ceiling_color, data);
+		parse_color(line + 2, data->scene->ceiling_color, data, to_free);
 }
 
 void	parse_map(char **lines, int start, t_data *data)

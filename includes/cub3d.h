@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/13 14:59:17 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:54:34 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
+# include <X11/keysym.h>
 # include <fcntl.h>
 # include <stdio.h>
 
@@ -60,9 +61,13 @@ typedef struct s_data
 void			init_data(t_data *data);
 void			init_player(t_data *data, int i, int j, char c);
 
-/// FREE
+/// EXIT
 void			err_msg(char *str, t_data *data);
+int				close_game(t_data *data);
+
+/// FREE
 void			free_data(t_data *data);
+void			free_split(char **lines);
 
 /// PARSING
 void			parsing(char *file, t_data *data);
@@ -70,9 +75,10 @@ void			parsing(char *file, t_data *data);
 void			check_character(t_data *data);
 void			check_declarations(char **lines, t_data *data);
 void			check_wall(char **map, t_data *data);
+void			check_textures_files(t_data *data);
 
 void			parse_map(char **lines, int start, t_data *data);
-void			parse_textures(char *line, t_data *data);
+void			parse_textures(char *line, t_data *data, char **to_free);
 
 /// RENDER
 void			render(t_data *data);

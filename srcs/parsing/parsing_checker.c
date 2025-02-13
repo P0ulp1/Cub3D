@@ -6,13 +6,13 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:11:32 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 14:24:14 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:56:13 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	validate_declarations(int *counts, t_data *data)
+static void	validate_declarations(int *counts, t_data *data, char **to_free)
 {
 	int	i;
 
@@ -20,7 +20,10 @@ static void	validate_declarations(int *counts, t_data *data)
 	while (i < 6)
 	{
 		if (counts[i] != 1)
+		{
+			free_split(to_free);
 			err_msg("Component must be declared exactly once\n", data);
+		}
 		i++;
 	}
 }
@@ -50,10 +53,10 @@ void	check_declarations(char **lines, t_data *data)
 			counts[5]++;
 		i++;
 	}
-	validate_declarations(counts, data);
+	validate_declarations(counts, data, lines);
 }
 
-static void	check_textures_files(t_data *data)
+void	check_textures_files(t_data *data)
 {
 	int	fd;
 
@@ -103,5 +106,4 @@ void	check_character(t_data *data)
 	}
 	if (player_count != 1)
 		err_msg("Map must contain exactly one player\n", data);
-	check_textures_files(data);
 }

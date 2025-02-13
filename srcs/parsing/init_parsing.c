@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 03:23:57 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 14:02:56 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:51:36 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	init_data(t_data *data)
 	if (!data->scene)
 		err_msg("Memory allocation failed\n", data);
 	data->scene->north_texture = NULL;
+	data->scene->south_texture = NULL;
 	data->scene->west_texture = NULL;
 	data->scene->east_texture = NULL;
 	data->scene->floor_color[0] = 0;
@@ -27,6 +28,8 @@ void	init_data(t_data *data)
 	data->scene->ceiling_color[1] = 0;
 	data->scene->ceiling_color[2] = 0;
 	data->scene->map = NULL;
+	data->mlx_ptr = NULL;
+	data->win_ptr = NULL;
 }
 
 static void	set_player_dir_ns(t_data *data, char c)

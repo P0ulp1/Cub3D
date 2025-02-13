@@ -6,18 +6,20 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:17:40 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 15:05:16 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:54:27 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	err_msg(char *str, t_data *data)
+void	free_split(char **lines)
 {
-	ft_putstr_fd("Error :\n", 2);
-	ft_putstr_fd(str, 2);
-	free_data(data);
-	exit(1);
+	int	i;
+
+	i = -1;
+	while (lines[++i])
+		free(lines[i]);
+	free(lines);
 }
 
 void	free_scene(t_data *data)

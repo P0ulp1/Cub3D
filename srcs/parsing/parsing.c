@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:06:33 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 14:27:57 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:54:24 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,10 @@ static void	parse_scene(char *content, t_data *data)
 	int		i;
 
 	lines = ft_split(content, '\n');
+	free(content);
 	check_declarations(lines, data);
-	i = 0;
-	while (lines[i])
+	i = -1;
+	while (lines[++i])
 	{
 		while (lines[i] && (lines[i][0] == '\0' || ft_str_isspace(lines[i])))
 			i++;
@@ -82,13 +83,11 @@ static void	parse_scene(char *content, t_data *data)
 			break ;
 		}
 		else
-			parse_textures(lines[i], data);
-		free(lines[i]);
-		i++;
+			parse_textures(lines[i], data, lines);
 	}
+	free_split(lines);
 	if (!data->scene->map)
 		err_msg("No map found in the file\n", data);
-	check_character(data);
 }
 
 void	parsing(char *file, t_data *data)
@@ -107,5 +106,6 @@ void	parsing(char *file, t_data *data)
 	content = read_file(fd, data);
 	close(fd);
 	parse_scene(content, data);
-	free(content);
+	check_character(data);
+	check_textures_files(data);
 }
