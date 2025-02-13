@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:21:46 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 15:54:11 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:44:29 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@ static void	parse_color(char *line, int *color, t_data *data, char **to_free)
 
 	str = ft_split(line, ',');
 	if (!str || !str[0] || !str[1] || !str[2])
+	{
+		free_split(to_free);
+		free_split(str);
 		err_msg("Invalid color format\n", data);
+	}
 	color[0] = ft_atoi(str[0]);
 	color[1] = ft_atoi(str[1]);
 	color[2] = ft_atoi(str[2]);
-	i = -1;
-	while (str[++i])
-		free(str[i]);
-	free(str);
+	free_split(str);
 	i = -1;
 	while (++i < 3)
 	{

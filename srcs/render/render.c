@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:42:31 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 17:11:58 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:37:24 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ void	render(t_data *data)
 	draw_square(&data->image, 100, 100, 200, 150, 0xFF3223);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.img, 0,
 		0);
+	mlx_destroy_image(data->mlx_ptr, data->image.img);
 	mlx_loop(data->mlx_ptr);
 }
