@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:11:32 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 03:20:24 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:03:19 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,25 +84,24 @@ void	check_character(t_data *data)
 	int	i;
 	int	j;
 
-	if (!data->scene->map)
-		err_msg("No map found in the file\n", data);
-	player_count = 0;
 	check_wall(data->scene->map, data);
-	i = 0;
-	while (data->scene->map[i])
+	player_count = 0;
+	i = -1;
+	while (data->scene->map[++i])
 	{
-		j = 0;
-		while (data->scene->map[i][j])
+		j = -1;
+		while (data->scene->map[i][++j])
 		{
-			if (ft_strchr("N", data->scene->map[i][j]))
+			if (ft_strchr("NSEW", data->scene->map[i][j]))
+			{
 				player_count++;
+				if (player_count != 1)
+					err_msg("Map must contain exactly one player\n", data);
+				init_player(data, i, j, data->scene->map[i][j]);
+			}
 			else if (!ft_strchr("01 ", data->scene->map[i][j]))
 				err_msg("Invalid character in map\n", data);
-			j++;
 		}
-		i++;
 	}
-	if (player_count != 1)
-		err_msg("Map must contain exactly one player start position\n", data);
 	check_textures_files(data);
 }

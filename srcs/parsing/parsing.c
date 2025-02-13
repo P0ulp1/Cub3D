@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:06:33 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 03:42:37 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:23:57 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ static void	parse_scene(char *content, t_data *data)
 		free(lines[i]);
 		i++;
 	}
-	free(lines);
+	if (!data->scene->map)
+		err_msg("No map found in the file\n", data);
 	check_character(data);
 }
 
