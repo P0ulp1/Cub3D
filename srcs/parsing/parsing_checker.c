@@ -6,13 +6,13 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:11:32 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/12 21:59:21 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 03:20:24 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	validate_declarations(int *counts)
+static void	validate_declarations(int *counts, t_data *data)
 {
 	int	i;
 
@@ -20,12 +20,12 @@ static void	validate_declarations(int *counts)
 	while (i < 6)
 	{
 		if (counts[i] != 1)
-			err_msg("Component must be declared exactly once\n");
+			err_msg("Component must be declared exactly once\n", data);
 		i++;
 	}
 }
 
-void	check_declarations(char **lines)
+void	check_declarations(char **lines, t_data *data)
 {
 	int	counts[6];
 	int	i;
@@ -50,59 +50,59 @@ void	check_declarations(char **lines)
 			counts[5]++;
 		i++;
 	}
-	validate_declarations(counts);
+	validate_declarations(counts, data);
 }
 
-static void	check_textures_files(t_scene *scene)
+static void	check_textures_files(t_data *data)
 {
 	int	fd;
 
-	if (!scene->north_texture || !scene->south_texture || !scene->west_texture
-		|| !scene->east_texture)
-		err_msg("Missing texture file\n");
-	fd = open(scene->north_texture, O_RDONLY);
+	if (!data->scene->north_texture || !data->scene->south_texture
+		|| !data->scene->west_texture || !data->scene->east_texture)
+		err_msg("Missing texture file\n", data);
+	fd = open(data->scene->north_texture, O_RDONLY);
 	if (fd < 0)
-		err_msg("Cannot open north texture file\n");
+		err_msg("Cannot open north texture file\n", data);
 	close(fd);
-	fd = open(scene->south_texture, O_RDONLY);
+	fd = open(data->scene->south_texture, O_RDONLY);
 	if (fd < 0)
-		err_msg("Cannot open south texture file\n");
+		err_msg("Cannot open south texture file\n", data);
 	close(fd);
-	fd = open(scene->west_texture, O_RDONLY);
+	fd = open(data->scene->west_texture, O_RDONLY);
 	if (fd < 0)
-		err_msg("Cannot open west texture file\n");
+		err_msg("Cannot open west texture file\n", data);
 	close(fd);
-	fd = open(scene->east_texture, O_RDONLY);
+	fd = open(data->scene->east_texture, O_RDONLY);
 	if (fd < 0)
-		err_msg("Cannot open east texture file\n");
+		err_msg("Cannot open east texture file\n", data);
 	close(fd);
 }
 
-void	check_character(t_scene *scene)
+void	check_character(t_data *data)
 {
 	int	player_count;
 	int	i;
 	int	j;
 
-	if (!scene->map)
-		err_msg("No map found in the file\n");
+	if (!data->scene->map)
+		err_msg("No map found in the file\n", data);
 	player_count = 0;
-	check_wall(scene->map);
+	check_wall(data->scene->map, data);
 	i = 0;
-	while (scene->map[i])
+	while (data->scene->map[i])
 	{
 		j = 0;
-		while (scene->map[i][j])
+		while (data->scene->map[i][j])
 		{
-			if (ft_strchr("N", scene->map[i][j]))
+			if (ft_strchr("N", data->scene->map[i][j]))
 				player_count++;
-			else if (!ft_strchr("01 ", scene->map[i][j]))
-				err_msg("Invalid character in map\n");
+			else if (!ft_strchr("01 ", data->scene->map[i][j]))
+				err_msg("Invalid character in map\n", data);
 			j++;
 		}
 		i++;
 	}
 	if (player_count != 1)
-		err_msg("Map must contain exactly one player start position\n");
-	check_textures_files(scene);
+		err_msg("Map must contain exactly one player start position\n", data);
+	check_textures_files(data);
 }

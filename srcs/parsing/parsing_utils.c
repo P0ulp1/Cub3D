@@ -6,20 +6,20 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:21:46 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/12 21:31:10 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 03:20:24 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	parse_color(char *line, int *color)
+static void	parse_color(char *line, int *color, t_data *data)
 {
 	char	**str;
 	int		i;
 
 	str = ft_split(line, ',');
 	if (!str || !str[0] || !str[1] || !str[2])
-		err_msg("Invalid color format\n");
+		err_msg("Invalid color format\n", data);
 	color[0] = ft_atoi(str[0]);
 	color[1] = ft_atoi(str[1]);
 	color[2] = ft_atoi(str[2]);
@@ -27,7 +27,7 @@ static void	parse_color(char *line, int *color)
 	while (i < 3)
 	{
 		if (color[i] < 0 || color[i] > 255)
-			err_msg("Color values must be between 0 and 255\n");
+			err_msg("Color values must be between 0 and 255\n", data);
 		i++;
 	}
 	i = 0;
@@ -39,25 +39,25 @@ static void	parse_color(char *line, int *color)
 	free(str);
 }
 
-void	parse_textures(char *line, t_scene *scene)
+void	parse_textures(char *line, t_data *data)
 {
 	while (ft_isspace(*line))
 		line++;
 	if (ft_strncmp(line, "NO ", 3) == 0)
-		scene->north_texture = ft_strdup(line + 3);
+		data->scene->north_texture = ft_strdup(line + 3);
 	else if (ft_strncmp(line, "SO ", 3) == 0)
-		scene->south_texture = ft_strdup(line + 3);
+		data->scene->south_texture = ft_strdup(line + 3);
 	else if (ft_strncmp(line, "WE ", 3) == 0)
-		scene->west_texture = ft_strdup(line + 3);
+		data->scene->west_texture = ft_strdup(line + 3);
 	else if (ft_strncmp(line, "EA ", 3) == 0)
-		scene->east_texture = ft_strdup(line + 3);
+		data->scene->east_texture = ft_strdup(line + 3);
 	else if (ft_strncmp(line, "F ", 2) == 0)
-		parse_color(line + 2, scene->floor_color);
+		parse_color(line + 2, data->scene->floor_color, data);
 	else if (ft_strncmp(line, "C ", 2) == 0)
-		parse_color(line + 2, scene->ceiling_color);
+		parse_color(line + 2, data->scene->ceiling_color, data);
 }
 
-void	parse_map(char **lines, int start, t_scene *scene)
+void	parse_map(char **lines, int start, t_data *data)
 {
 	int	i;
 	int	map_height;
@@ -70,18 +70,18 @@ void	parse_map(char **lines, int start, t_scene *scene)
 		map_height++;
 		i++;
 	}
-	scene->map = malloc(sizeof(char *) * (map_height + 1));
-	if (!scene->map)
-		err_msg("Memory allocation failed\n");
+	data->scene->map = malloc(sizeof(char *) * (map_height + 1));
+	if (!data->scene->map)
+		err_msg("Memory allocation failed\n", data);
 	i = start;
 	j = 0;
 	while (lines[i])
 	{
-		scene->map[j] = ft_strdup(lines[i]);
-		if (!scene->map[j])
-			err_msg("Memory allocation failed\n");
+		data->scene->map[j] = ft_strdup(lines[i]);
+		if (!data->scene->map[j])
+			err_msg("Memory allocation failed\n", data);
 		i++;
 		j++;
 	}
-	scene->map[j] = NULL;
+	data->scene->map[j] = NULL;
 }

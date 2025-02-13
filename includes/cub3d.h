@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/13 01:10:22 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 03:27:44 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,21 @@ typedef struct s_data
 	// DDA struct;
 }			t_data;
 
+/// INIT
+void		init_data(t_data *data);
+
 /// PARSING
 void		parsing(char *file, t_data *data);
 
-void		check_character(t_scene *scene);
-void		check_declarations(char **lines);
-void		check_wall(char **map);
+void		check_character(t_data *data);
+void		check_declarations(char **lines, t_data *data);
+void		check_wall(char **map, t_data *data);
 
-void		parse_map(char **lines, int start, t_scene *scene);
-void		parse_textures(char *line, t_scene *scene);
+void		parse_map(char **lines, int start, t_data *data);
+void		parse_textures(char *line, t_data *data);
 
 /// FREE
-void		err_msg(char *str);
+void		err_msg(char *str, t_data *data);
+void		free_data(t_data *data);
 
 #endif

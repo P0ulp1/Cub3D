@@ -6,13 +6,13 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:06:33 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 01:14:10 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 03:30:00 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	read_and_join(int fd, char **content, char *buffer)
+static void	read_and_join(int fd, char **content, char *buffer, t_data *data)
 {
 	char	*tmp;
 	int		bytes_read;
@@ -26,7 +26,7 @@ static void	read_and_join(int fd, char **content, char *buffer)
 		if (!tmp)
 		{
 			free(buffer);
-			err_msg("Memory allocation failed\n");
+			err_msg("Memory allocation failed\n", data);
 		}
 		*content = tmp;
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
@@ -34,25 +34,25 @@ static void	read_and_join(int fd, char **content, char *buffer)
 	if (bytes_read < 0)
 	{
 		free(*content);
-		err_msg("Read error\n");
+		err_msg("Read error\n", data);
 	}
 }
 
-char	*read_file(int fd)
+char	*read_file(int fd, t_data *data)
 {
 	char	*buffer;
 	char	*content;
 
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
-		err_msg("Memory allocation failed\n");
+		err_msg("Memory allocation failed\n", data);
 	content = ft_strdup("");
 	if (!content)
 	{
 		free(buffer);
-		err_msg("Memory allocation failed\n");
+		err_msg("Memory allocation failed\n", data);
 	}
-	read_and_join(fd, &content, buffer);
+	read_and_join(fd, &content, buffer, data);
 	free(buffer);
 	return (content);
 }
@@ -64,13 +64,13 @@ static int	is_declaration(char *line)
 		&& !ft_strstr(line, "F ") && !ft_strstr(line, "C "));
 }
 
-static void	parse_scene(char *content, t_scene *scene)
+static void	parse_scene(char *content, t_data *data)
 {
 	char	**lines;
 	int		i;
 
 	lines = ft_split(content, '\n');
-	check_declarations(lines);
+	check_declarations(lines, data);
 	i = 0;
 	while (lines[i])
 	{
@@ -78,18 +78,18 @@ static void	parse_scene(char *content, t_scene *scene)
 			i++;
 		if (lines[i] && ft_strchr(lines[i], '1') && is_declaration(lines[i]))
 		{
-			parse_map(lines, i, scene);
+			parse_map(lines, i, data);
 			break ;
 		}
 		else
-			parse_textures(lines[i], scene);
+			parse_textures(lines[i], data);
 		i++;
 	}
 	i = 0;
 	while (lines[i])
 		free(lines[i++]);
 	free(lines);
-	check_character(scene);
+	check_character(data);
 }
 
 void	parsing(char *file, t_data *data)
@@ -97,18 +97,16 @@ void	parsing(char *file, t_data *data)
 	int		fd;
 	char	*content;
 
+	init_data(data);
 	if (ft_strlen(file) < 4)
-		err_msg("Invalid file extension\n");
+		err_msg("Invalid file extension\n", data);
 	if (ft_strcmp(file + ft_strlen(file) - 4, ".cub"))
-		err_msg("Invalid file extension\n");
+		err_msg("Invalid file extension\n", data);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		err_msg("Cannot open file\n");
-	content = read_file(fd);
+		err_msg("Cannot open file\n", data);
+	content = read_file(fd, data);
 	close(fd);
-	data->scene = malloc(sizeof(t_scene));
-	if (!data->scene)
-		err_msg("Memory allocation failed\n");
-	parse_scene(content, data->scene);
+	parse_scene(content, data);
 	free(content);
 }
