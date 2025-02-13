@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:21:46 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 03:20:24 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 03:35:15 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ static void	parse_color(char *line, int *color, t_data *data)
 	color[1] = ft_atoi(str[1]);
 	color[2] = ft_atoi(str[2]);
 	i = 0;
-	while (i < 3)
-	{
-		if (color[i] < 0 || color[i] > 255)
-			err_msg("Color values must be between 0 and 255\n", data);
-		i++;
-	}
-	i = 0;
 	while (str[i])
 	{
 		free(str[i]);
 		i++;
 	}
 	free(str);
+	i = 0;
+	while (i < 3)
+	{
+		if (color[i] < 0 || color[i] > 255)
+			err_msg("Color values must be between 0 and 255\n", data);
+		i++;
+	}
 }
 
 void	parse_textures(char *line, t_data *data)
