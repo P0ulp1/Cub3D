@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:06:33 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 15:54:24 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:20:14 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void	parsing(char *file, t_data *data)
 	content = read_file(fd, data);
 	close(fd);
 	parse_scene(content, data);
+	check_wall(data->scene->map, data);
 	check_character(data);
 	check_textures_files(data);
 }

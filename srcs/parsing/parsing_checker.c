@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:11:32 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 15:56:13 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:20:07 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	check_character(t_data *data)
 	int	i;
 	int	j;
 
-	check_wall(data->scene->map, data);
 	player_count = 0;
 	i = -1;
 	while (data->scene->map[++i])

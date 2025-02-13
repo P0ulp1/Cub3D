@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/13 15:54:34 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:13:19 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # undef BUFFER_SIZE
 # define BUFFER_SIZE 4096
 
-# define SCREEN_WIDTH 1920
-# define SCREEN_HEIGHT 1080
+// # define SCREEN_WIDTH 1920
+// # define SCREEN_HEIGHT 1080
 
 typedef struct s_scene
 {
