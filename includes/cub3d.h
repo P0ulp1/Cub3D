@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/13 13:57:33 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:59:17 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 
 # undef BUFFER_SIZE
 # define BUFFER_SIZE 4096
+
+# define SCREEN_WIDTH 1920
+# define SCREEN_HEIGHT 1080
 
 typedef struct s_scene
 {
@@ -57,6 +60,10 @@ typedef struct s_data
 void			init_data(t_data *data);
 void			init_player(t_data *data, int i, int j, char c);
 
+/// FREE
+void			err_msg(char *str, t_data *data);
+void			free_data(t_data *data);
+
 /// PARSING
 void			parsing(char *file, t_data *data);
 
@@ -67,8 +74,7 @@ void			check_wall(char **map, t_data *data);
 void			parse_map(char **lines, int start, t_data *data);
 void			parse_textures(char *line, t_data *data);
 
-/// FREE
-void			err_msg(char *str, t_data *data);
-void			free_data(t_data *data);
+/// RENDER
+void			render(t_data *data);
 
 #endif
