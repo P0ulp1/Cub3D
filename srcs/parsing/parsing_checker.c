@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:11:32 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 16:20:07 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 19:12:02 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	check_character(t_data *data)
 				player_count++;
 				init_player(data, i, j, data->scene->map[i][j]);
 			}
-			else if (!ft_strchr("01 ", data->scene->map[i][j]))
+			else if (!ft_strchr("01D ", data->scene->map[i][j]))
 				err_msg("Invalid character in map\n", data);
 		}
 	}
