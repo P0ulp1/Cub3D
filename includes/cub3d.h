@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/13 16:59:50 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 18:31:34 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,15 @@
 # undef BUFFER_SIZE
 # define BUFFER_SIZE 4096
 
-// # define SCREEN_WIDTH 1920
-// # define SCREEN_HEIGHT 1080
+# define MINIMAP_SIZE 10
+
+/// COLORS
+
+# define BLACK 0x000000
+# define WHITE 0xFFFFFF
+# define RED 0xFF0000
+# define GREEN 0x00FF00
+# define BLUE 0x0000FF
 
 typedef struct s_scene
 {
@@ -94,5 +101,7 @@ void			parse_textures(char *line, t_data *data, char **to_free);
 
 /// RENDER
 void			render(t_data *data);
+
+void			draw_minimap(t_data *data);
 
 #endif
