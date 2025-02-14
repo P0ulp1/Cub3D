@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 22:34:33 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/14 22:35:46 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 23:05:29 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	close_door(t_data *data)
 		{
 			if (data->scene->map[y][x] == 'P')
 			{
-				if (!((player_x - x <= 1 && player_x - x >= -1 && player_y == y)
-						|| (player_y - y <= 1 && player_y - y >= -1
+				if (!((player_x - x <= 2 && player_x - x >= -2 && player_y == y)
+						|| (player_y - y <= 2 && player_y - y >= -2
 							&& player_x == x)))
 					data->scene->map[y][x] = 'D';
 			}
