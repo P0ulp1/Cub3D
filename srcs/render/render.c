@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:42:31 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/14 22:18:36 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:21:34 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,4 @@ void	render(t_data *data)
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.img, 0,
 		0);
 	mlx_loop(data->mlx_ptr);
-	if (data->image.img)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->image.img);
-		data->image.img = NULL;
-	}
 }

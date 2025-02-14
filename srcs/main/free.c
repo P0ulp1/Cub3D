@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:17:40 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/14 21:28:53 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:21:44 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ void	free_scene(t_data *data)
 void	free_data(t_data *data)
 {
 	free_scene(data);
+	if (data->image.img)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->image.img);
+		data->image.img = NULL;
+	}
 	if (data->win_ptr)
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	if (data->mlx_ptr)
