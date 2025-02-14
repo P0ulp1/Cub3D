@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 03:23:57 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/14 21:18:37 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:42:57 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	init_data(t_data *data)
 	data->scene->ceiling_color[1] = 0;
 	data->scene->ceiling_color[2] = 0;
 	data->scene->map = NULL;
-	data->mlx_ptr = NULL;
-	data->win_ptr = NULL;
+	data->mlx = NULL;
+	data->win = NULL;
 	data->image.img = NULL;
 }
 

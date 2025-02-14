@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/14 22:36:53 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:42:30 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ typedef struct s_image
 
 typedef struct s_data
 {
-	void		*mlx_ptr;
-	void		*win_ptr;
+	void		*mlx;
+	void		*win;
 	t_scene		*scene;
 	t_player	player;
 	t_image		image;
