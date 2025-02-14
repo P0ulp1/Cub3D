@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 22:16:36 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/14 22:17:51 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:35:40 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	move_player(t_data *data)
 		moved += move_player_position(data, 'R');
 	if (moved && data->win_ptr && data->mlx_ptr)
 	{
+		close_door(data);
 		draw_minimap(data);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.img,
 			0, 0);
@@ -94,6 +95,8 @@ int	key_handler(int key, t_data *data)
 		data->player.move_y = -1;
 	if (key == XK_d)
 		data->player.move_x = 1;
+	if (key == XK_space)
+		open_door(data);
 	return (0);
 }
 

@@ -30,6 +30,7 @@ C_FILE		=	main/main							\
 				render/render						\
 				render/minimap						\
 				render/move							\
+				render/door							\
 
 SRC_DIR		=	./srcs/
 

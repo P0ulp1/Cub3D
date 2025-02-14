@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/14 22:20:10 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:36:53 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,10 @@ void			parse_textures(char *line, t_data *data, char **to_free);
 /// RENDER
 void			render(t_data *data);
 
+/// BONUS
 void			draw_minimap(t_data *data);
+void			open_door(t_data *data);
+void			close_door(t_data *data);
 
 /// MOVE
 
