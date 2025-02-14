@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 03:23:57 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 15:51:36 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 21:18:37 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_data(t_data *data)
 	data->scene->map = NULL;
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
+	data->image.img = NULL;
 }
 
 static void	set_player_dir_ns(t_data *data, char c)
@@ -70,6 +71,9 @@ static void	set_player_dir_ew(t_data *data, char c)
 
 void	init_player(t_data *data, int i, int j, char c)
 {
+	data->player.move_x = 0;
+	data->player.move_y = 0;
+	data->player.rotate = 0;
 	data->player.x = j + 0.5;
 	data->player.y = i + 0.5;
 	if (c == 'N' || c == 'S')

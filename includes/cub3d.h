@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/14 18:50:44 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:20:10 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
+# include <X11/X.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
+# include <stdbool.h>
 # include <stdio.h>
 
 # undef BUFFER_SIZE
 # define BUFFER_SIZE 4096
+
+# define MOVESPEED 0.03
 
 # define MS 10 // minimap square size
 
@@ -51,8 +55,9 @@ typedef struct s_player
 	double		dir_y;
 	double		plane_x;
 	double		plane_y;
-	double		move_speed;
-	double		rot_speed;
+	double		move_x;
+	double		move_y;
+	double		rotate;
 }				t_player;
 
 typedef struct s_image
@@ -111,5 +116,11 @@ void			parse_textures(char *line, t_data *data, char **to_free);
 void			render(t_data *data);
 
 void			draw_minimap(t_data *data);
+
+/// MOVE
+
+int				key_handler(int key, t_data *data);
+int				key_release(int key, t_data *data);
+int				move_player(t_data *data);
 
 #endif

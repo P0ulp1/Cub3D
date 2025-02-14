@@ -29,6 +29,7 @@ C_FILE		=	main/main							\
 				parsing/parsing_checker				\
 				render/render						\
 				render/minimap						\
+				render/move							\
 
 SRC_DIR		=	./srcs/
 

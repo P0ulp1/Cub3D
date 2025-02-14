@@ -6,18 +6,11 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:42:31 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/14 18:51:14 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:18:36 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	key_handler(int keycode, t_data *data)
-{
-	if (keycode == XK_Escape)
-		close_game(data);
-	return (0);
-}
 
 void	setup_window(t_data *data)
 {
@@ -38,15 +31,22 @@ void	setup_window(t_data *data)
 	if (!data->image.img_data)
 		err_msg("Failed to get image data address\n", data);
 	mlx_hook(data->win_ptr, 17, 0, close_game, data);
-	mlx_key_hook(data->win_ptr, key_handler, data);
+	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, key_handler, data);
+	mlx_hook(data->win_ptr, KeyRelease, KeyReleaseMask, key_release, data);
+	mlx_loop_hook(data->mlx_ptr, move_player, data);
 }
 
 void	render(t_data *data)
 {
 	setup_window(data);
 	draw_minimap(data);
+	move_player(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.img, 0,
 		0);
-	mlx_destroy_image(data->mlx_ptr, data->image.img);
 	mlx_loop(data->mlx_ptr);
+	if (data->image.img)
+	{
+		mlx_destroy_image(data->mlx_ptr, data->image.img);
+		data->image.img = NULL;
+	}
 }
