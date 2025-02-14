@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/14 18:31:34 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 18:50:44 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # undef BUFFER_SIZE
 # define BUFFER_SIZE 4096
 
-# define MINIMAP_SIZE 10
+# define MS 10 // minimap square size
 
 /// COLORS
 
@@ -75,6 +75,14 @@ typedef struct s_data
 	t_image		image;
 	// DDA struct;
 }				t_data;
+
+typedef struct s_minimap
+{
+	int			x;
+	int			y;
+	int			width;
+	int			height;
+}				t_minimap;
 
 /// INIT
 void			init_data(t_data *data);
