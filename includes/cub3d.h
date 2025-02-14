@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/14 22:42:30 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:57:05 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_scene
 	char		*south_texture;
 	char		*west_texture;
 	char		*east_texture;
+	char		*wall;
 	int			floor_color[3];
 	int			ceiling_color[3];
 	char		**map;

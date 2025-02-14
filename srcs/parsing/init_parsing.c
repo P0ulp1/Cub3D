@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 03:23:57 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/14 22:42:57 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:59:17 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	init_data(t_data *data)
 	data->scene->south_texture = NULL;
 	data->scene->west_texture = NULL;
 	data->scene->east_texture = NULL;
+	data->scene->wall = NULL;
 	data->scene->floor_color[0] = 0;
 	data->scene->floor_color[1] = 0;
 	data->scene->floor_color[2] = 0;

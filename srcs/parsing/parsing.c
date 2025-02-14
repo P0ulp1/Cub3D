@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:06:33 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 16:20:14 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:59:04 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ static int	is_declaration(char *line)
 {
 	return (!ft_strstr(line, "NO ") && !ft_strstr(line, "SO ")
 		&& !ft_strstr(line, "WE ") && !ft_strstr(line, "EA ")
-		&& !ft_strstr(line, "F ") && !ft_strstr(line, "C "));
+		&& !ft_strstr(line, "F ") && !ft_strstr(line, "C ") && !ft_strstr(line,
+			"DOOR "));
 }
 
 static void	parse_scene(char *content, t_data *data)

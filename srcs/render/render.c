@@ -6,13 +6,13 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:42:31 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/14 22:43:11 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/14 22:54:57 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	setup_window(t_data *data)
+static void	init_window(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (!data->mlx)
@@ -22,6 +22,10 @@ void	setup_window(t_data *data)
 			"SUPER JEU DE OUF");
 	if (!data->win)
 		err_msg("Failed to create window\n", data);
+}
+
+static void	init_image(t_data *data)
+{
 	data->image.img = mlx_new_image(data->mlx, data->image.width,
 			data->image.height);
 	if (!data->image.img)
@@ -30,6 +34,11 @@ void	setup_window(t_data *data)
 			&data->image.size_line, &data->image.endian);
 	if (!data->image.img_data)
 		err_msg("Failed to get image data address\n", data);
+	draw_minimap(data);
+}
+
+static void	setup_hooks(t_data *data)
+{
 	mlx_hook(data->win, 17, 0, close_game, data);
 	mlx_hook(data->win, KeyPress, KeyPressMask, key_handler, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release, data);
@@ -38,9 +47,9 @@ void	setup_window(t_data *data)
 
 void	render(t_data *data)
 {
-	setup_window(data);
-	draw_minimap(data);
-	move_player(data);
+	init_window(data);
+	init_image(data);
+	setup_hooks(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->image.img, 0, 0);
 	mlx_loop(data->mlx);
 }

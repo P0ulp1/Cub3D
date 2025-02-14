@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:21:46 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 18:44:29 by pbailly          ###   ########.fr       */
+/*   Updated: 2025/02/14 22:58:02 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	parse_textures(char *line, t_data *data, char **to_free)
 	else if (ft_strncmp(line, "WE ", 3) == 0)
 		data->scene->west_texture = ft_strdup(line + 3);
 	else if (ft_strncmp(line, "EA ", 3) == 0)
+		data->scene->east_texture = ft_strdup(line + 3);
+	else if (ft_strncmp(line, "DOOR ", 3) == 0)
 		data->scene->east_texture = ft_strdup(line + 3);
 	else if (ft_strncmp(line, "F ", 2) == 0)
 		parse_color(line + 2, data->scene->floor_color, data, to_free);
