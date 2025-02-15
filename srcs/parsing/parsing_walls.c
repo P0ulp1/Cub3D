@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:17:05 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/13 03:20:24 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/15 02:29:00 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ static void	check_vertical_borders(char **map, t_data *data)
 
 static void	check_inner_walls(char **map, t_data *data)
 {
-	int	height;
 	int	i;
 	int	j;
+	int	height;
 
 	height = 0;
 	while (map[height])
@@ -77,12 +77,12 @@ static void	check_inner_walls(char **map, t_data *data)
 		j = 1;
 		while (j < (int)ft_strlen(map[i]) - 1)
 		{
-			if (map[i][j] != '1' && !ft_isspace(map[i][j]))
-			{
-				if (ft_isspace(map[i - 1][j]) || ft_isspace(map[i + 1][j])
-					|| ft_isspace(map[i][j - 1]) || ft_isspace(map[i][j + 1]))
-					err_msg("Map must be surrounded by walls\n", data);
-			}
+			if (map[i][j] != '1' && !ft_isspace(map[i][j])
+				&& (j >= (int)ft_strlen(map[i - 1]) || ft_isspace(map[i - 1][j])
+					|| j >= (int)ft_strlen(map[i + 1]) || ft_isspace(map[i
+						+ 1][j]) || ft_isspace(map[i][j - 1])
+					|| ft_isspace(map[i][j + 1])))
+				err_msg("Map must be surrounded by walls\n", data);
 			j++;
 		}
 		i++;
