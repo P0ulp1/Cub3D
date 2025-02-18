@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/18 14:27:10 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:32:35 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ typedef struct s_minimap
 }				t_minimap;
 
 /// INIT
+
 void			init_data(t_data *data);
 void			init_player(t_data *data, int i, int j, char c);
 void			init_textures(t_data *data);
@@ -132,14 +133,17 @@ void			init_image(t_data *data);
 void			init_window(t_data *data);
 
 /// EXIT
+
 void			err_msg(char *str, t_data *data);
 int				close_game(t_data *data);
 
 /// FREE
+
 void			free_data(t_data *data);
 void			free_split(char **lines);
 
 /// PARSING
+
 void			parsing(char *file, t_data *data);
 
 void			check_character(t_data *data);
@@ -152,6 +156,7 @@ void			parse_map(char **lines, int start, t_data *data);
 void			parse_textures(char *line, t_data *data, char **to_free);
 
 /// RENDER
+
 void			render(t_data *data);
 void			render_scene(t_data *data);
 
@@ -170,6 +175,7 @@ void			draw_ceiling(t_data *data);
 void			draw_floor(t_data *data);
 
 /// BONUS
+
 void			draw_minimap(t_data *data);
 void			open_door(t_data *data);
 void			close_door(t_data *data);
