@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 22:16:36 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/18 12:40:42 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:38:58 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,23 @@ static int	move_player_position(t_data *data, char mode)
 
 	if (mode == 'L')
 	{
-		new_x = data->player.x + data->player.dir_y * MOVESPEED;
-		new_y = data->player.y - data->player.dir_x * MOVESPEED;
+		new_x = data->player.x + data->player.dir_y * data->move_speed;
+		new_y = data->player.y - data->player.dir_x * data->move_speed;
 	}
 	else if (mode == 'R')
 	{
-		new_x = data->player.x - data->player.dir_y * MOVESPEED;
-		new_y = data->player.y + data->player.dir_x * MOVESPEED;
+		new_x = data->player.x - data->player.dir_y * data->move_speed;
+		new_y = data->player.y + data->player.dir_x * data->move_speed;
 	}
 	else if (mode == 'B')
 	{
-		new_x = data->player.x - data->player.dir_x * MOVESPEED;
-		new_y = data->player.y - data->player.dir_y * MOVESPEED;
+		new_x = data->player.x - data->player.dir_x * data->move_speed;
+		new_y = data->player.y - data->player.dir_y * data->move_speed;
 	}
 	else if (mode == 'F')
 	{
-		new_x = data->player.x + data->player.dir_x * MOVESPEED;
-		new_y = data->player.y + data->player.dir_y * MOVESPEED;
+		new_x = data->player.x + data->player.dir_x * data->move_speed;
+		new_y = data->player.y + data->player.dir_y * data->move_speed;
 	}
 	return (valid_move(data, new_x, new_y));
 }
@@ -67,7 +67,7 @@ static int	rotate_player(t_data *data, double direction)
 	double		rotspeed;
 
 	p = &data->player;
-	rotspeed = ROTSPEED * direction;
+	rotspeed = data->rot_speed * direction;
 	tmp_x = p->dir_x;
 	p->dir_x = p->dir_x * cos(rotspeed) - p->dir_y * sin(rotspeed);
 	p->dir_y = tmp_x * sin(rotspeed) + p->dir_y * cos(rotspeed);

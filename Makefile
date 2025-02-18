@@ -24,7 +24,7 @@ C_FILE		=	main/main							\
 				main/exit							\
 				init/init_data						\
 				init/init_player					\
-				init/init_textures					\
+				init/init_mlx_image					\
 				parsing/parsing						\
 				parsing/parsing_utils				\
 				parsing/parsing_walls				\

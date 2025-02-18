@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/18 14:32:35 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:40:56 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@
 # undef BUFFER_SIZE
 # define BUFFER_SIZE 4096
 
-# define MOVESPEED 0.009
-# define ROTSPEED 0.009
-
-# define MS 10 // minimap square size
+# define MS 8 // minimap square size
 
 /// COLORS
 
@@ -114,6 +111,8 @@ typedef struct s_data
 	t_image		image;
 	t_image		*textures[5];
 	int			has_door;
+	double		move_speed;
+	double		rot_speed;
 }				t_data;
 
 typedef struct s_minimap
