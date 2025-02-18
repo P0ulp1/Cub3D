@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:11:32 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/14 19:12:02 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/18 11:43:05 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,23 @@ void	check_declarations(char **lines, t_data *data)
 	validate_declarations(counts, data, lines);
 }
 
+void	check_textures_exist(t_data *data)
+{
+	if (!data->scene->north_texture || !data->scene->south_texture
+		|| !data->scene->west_texture || !data->scene->east_texture
+		|| !data->scene->floor_color[0] || !data->scene->ceiling_color[0])
+		err_msg("Missing texture or color declaration\n", data);
+	if (data->has_door)
+	{
+		if (!data->scene->door_texture)
+			err_msg("Missing door texture declaration\n", data);
+	}
+}
+
 void	check_textures_files(t_data *data)
 {
 	int	fd;
 
-	if (!data->scene->north_texture || !data->scene->south_texture
-		|| !data->scene->west_texture || !data->scene->east_texture)
-		err_msg("Missing texture file\n", data);
 	fd = open(data->scene->north_texture, O_RDONLY);
 	if (fd < 0)
 		err_msg("Cannot open north texture file\n", data);
@@ -79,6 +89,13 @@ void	check_textures_files(t_data *data)
 	if (fd < 0)
 		err_msg("Cannot open east texture file\n", data);
 	close(fd);
+	if (data->has_door)
+	{
+		fd = open(data->scene->door_texture, O_RDONLY);
+		if (fd < 0)
+			err_msg("Cannot open door texture file\n", data);
+		close(fd);
+	}
 }
 
 void	check_character(t_data *data)
@@ -99,6 +116,8 @@ void	check_character(t_data *data)
 				player_count++;
 				init_player(data, i, j, data->scene->map[i][j]);
 			}
+			else if (ft_strchr("D", data->scene->map[i][j]))
+				data->has_door = 1;
 			else if (!ft_strchr("01D ", data->scene->map[i][j]))
 				err_msg("Invalid character in map\n", data);
 		}

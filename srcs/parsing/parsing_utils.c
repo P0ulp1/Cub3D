@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:21:46 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/15 00:33:58 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/18 09:59:16 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	parse_textures(char *line, t_data *data, char **to_free)
 		data->scene->west_texture = ft_strdup(line + 3);
 	else if (ft_strncmp(line, "EA ", 3) == 0)
 		data->scene->east_texture = ft_strdup(line + 3);
-	else if (ft_strncmp(line, "DOOR ", 3) == 0)
-		data->scene->door_texture = ft_strdup(line + 3);
+	else if (ft_strncmp(line, "DOOR ", 5) == 0)
+		data->scene->door_texture = ft_strdup(line + 5);
 	else if (ft_strncmp(line, "F ", 2) == 0)
 		parse_color(line + 2, data->scene->floor_color, data, to_free);
 	else if (ft_strncmp(line, "C ", 2) == 0)

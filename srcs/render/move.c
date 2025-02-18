@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 22:16:36 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/14 22:43:25 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/18 12:40:42 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,23 @@ static int	move_player_position(t_data *data, char mode)
 	return (valid_move(data, new_x, new_y));
 }
 
+static int	rotate_player(t_data *data, double direction)
+{
+	t_player	*p;
+	double		tmp_x;
+	double		rotspeed;
+
+	p = &data->player;
+	rotspeed = ROTSPEED * direction;
+	tmp_x = p->dir_x;
+	p->dir_x = p->dir_x * cos(rotspeed) - p->dir_y * sin(rotspeed);
+	p->dir_y = tmp_x * sin(rotspeed) + p->dir_y * cos(rotspeed);
+	tmp_x = p->plane_x;
+	p->plane_x = p->plane_x * cos(rotspeed) - p->plane_y * sin(rotspeed);
+	p->plane_y = tmp_x * sin(rotspeed) + p->plane_y * cos(rotspeed);
+	return (1);
+}
+
 int	move_player(t_data *data)
 {
 	int	moved;
@@ -73,37 +90,16 @@ int	move_player(t_data *data)
 		moved += move_player_position(data, 'L');
 	if (data->player.move_x == 1)
 		moved += move_player_position(data, 'R');
+	if (data->player.rotate == 1)
+		moved += rotate_player(data, 1);
+	if (data->player.rotate == -1)
+		moved += rotate_player(data, -1);
 	if (moved && data->win && data->mlx)
 	{
 		close_door(data);
+		render_scene(data);
 		draw_minimap(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->image.img, 0, 0);
 	}
 	return (moved);
-}
-
-int	key_handler(int key, t_data *data)
-{
-	if (key == XK_Escape)
-		close_game(data);
-	if (key == XK_w)
-		data->player.move_y = 1;
-	if (key == XK_a)
-		data->player.move_x = -1;
-	if (key == XK_s)
-		data->player.move_y = -1;
-	if (key == XK_d)
-		data->player.move_x = 1;
-	if (key == XK_space)
-		open_door(data);
-	return (0);
-}
-
-int	key_release(int key, t_data *data)
-{
-	if (key == XK_w || key == XK_s)
-		data->player.move_y = 0;
-	if (key == XK_a || key == XK_d)
-		data->player.move_x = 0;
-	return (0);
 }

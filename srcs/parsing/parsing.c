@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:06:33 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/14 22:59:04 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/18 12:45:34 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void	parsing(char *file, t_data *data)
 	int		fd;
 	char	*content;
 
-	init_data(data);
 	if (ft_strlen(file) < 4)
 		err_msg("Invalid file extension\n", data);
 	if (ft_strcmp(file + ft_strlen(file) - 4, ".cub"))
@@ -109,5 +108,6 @@ void	parsing(char *file, t_data *data)
 	parse_scene(content, data);
 	check_wall(data->scene->map, data);
 	check_character(data);
+	check_textures_exist(data);
 	check_textures_files(data);
 }

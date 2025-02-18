@@ -9,7 +9,7 @@ NAME		=	cub3D
 
 CC			=	cc
 
-FLAG		=	-Wall -Werror -Wextra -g3 -I./minilibx-linux -I./includes
+FLAG		=	-Wall -Werror -Wextra -g3 -lm -I./minilibx-linux -I./includes
 
 LIBFT_PATH	=	./libft/
 
@@ -22,7 +22,9 @@ MLX_LIB 	=	./minilibx-linux/libmlx.a -lX11 -lXext
 C_FILE		=	main/main							\
 				main/free							\
 				main/exit							\
-				parsing/init_parsing				\
+				init/init_data						\
+				init/init_player					\
+				init/init_textures					\
 				parsing/parsing						\
 				parsing/parsing_utils				\
 				parsing/parsing_walls				\
@@ -31,6 +33,7 @@ C_FILE		=	main/main							\
 				render/minimap						\
 				render/move							\
 				render/door							\
+				render/key_handler					\
 
 SRC_DIR		=	./srcs/
 
