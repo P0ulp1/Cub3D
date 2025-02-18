@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:56:34 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/18 14:00:20 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:26:35 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,8 @@ void	perform_dda(t_data *data, t_ray *ray)
 	}
 }
 
-void	calculate_wall(t_data *data, t_ray *ray)
+void	calculate_wall_distances(t_data *data, t_ray *ray)
 {
-	double	wall_x;
-
 	if (ray->side == 0)
 		ray->perp_wall_dist = ray->side_dist_x - ray->delta_dist_x;
 	else
@@ -87,6 +85,12 @@ void	calculate_wall(t_data *data, t_ray *ray)
 		ray->draw_start = 0;
 	if (ray->draw_end >= data->image.height)
 		ray->draw_end = data->image.height - 1;
+}
+
+void	select_wall_texture(t_data *data, t_ray *ray)
+{
+	double	wall_x;
+
 	if (data->scene->map[ray->map_y][ray->map_x] == 'D')
 		ray->texture = data->textures[DOOR];
 	else if (ray->side == 0)

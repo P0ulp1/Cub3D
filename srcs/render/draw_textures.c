@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:03:51 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/18 14:15:26 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:30:25 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	draw_ceiling(t_data *data)
 	int	y;
 	int	color;
 
-	color = (data->scene->ceiling_color[0] << 16) | (data->scene->ceiling_color[1] << 8) | data->scene->ceiling_color[2];
+	color = (data->scene->ceiling_color[0] << 16)
+		+ (data->scene->ceiling_color[1] << 8) + data->scene->ceiling_color[2];
 	y = 0;
 	while (y < data->image.height / 2)
 	{
@@ -63,7 +64,8 @@ void	draw_floor(t_data *data)
 	int	y;
 	int	color;
 
-	color = (data->scene->floor_color[0] << 16) | (data->scene->floor_color[1] << 8) | data->scene->floor_color[2];
+	color = (data->scene->floor_color[0] << 16)
+		+ (data->scene->floor_color[1] << 8) + data->scene->floor_color[2];
 	y = data->image.height / 2;
 	while (y < data->image.height)
 	{

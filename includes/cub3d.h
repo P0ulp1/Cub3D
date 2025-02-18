@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/18 14:04:47 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:27:10 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,8 @@ void			render_scene(t_data *data);
 
 /// RAYCASTING
 
-void			calculate_wall(t_data *data, t_ray *ray);
+void			calculate_wall_distances(t_data *data, t_ray *ray);
+void			select_wall_texture(t_data *data, t_ray *ray);
 void			perform_dda(t_data *data, t_ray *ray);
 void			calculate_step(t_data *data, t_ray *ray);
 void			init_ray(t_data *data, t_ray *ray, int i);

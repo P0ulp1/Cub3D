@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:42:31 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/18 14:07:07 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:26:11 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ static void	setup_hooks(t_data *data)
 	mlx_hook(data->win, KeyPress, KeyPressMask, key_handler, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release, data);
 	mlx_loop_hook(data->mlx, move_player, data);
+}
+
+static void	calculate_wall(t_data *data, t_ray *ray)
+{
+	calculate_wall_distances(data, ray);
+	select_wall_texture(data, ray);
 }
 
 void	render_scene(t_data *data)
