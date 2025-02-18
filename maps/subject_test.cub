@@ -1,10 +1,11 @@
-NO textures/wolfenstein/grey_stone.xpm
-SO textures/wolfenstein/purple_stone.xpm
-WE textures/wolfenstein/red_brick.xpm
-EA textures/wolfenstein/wood.xpm
+NO ./assets/made_wall_n.xpm
+SO ./assets/made_wall_s.xpm
+WE ./assets/made_wall_w.xpm
+EA ./assets/made_wall_e.xpm
+DOOR ./assets/made_door.xpm
 
-F 220,100,0
-C 225,30,0
+F 64,64,64
+C 182,182,182
 
         1111111111111111111111111
         1000000000110000000000001
