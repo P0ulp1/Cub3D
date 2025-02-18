@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/18 13:12:22 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:04:47 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ typedef struct s_minimap
 void			init_data(t_data *data);
 void			init_player(t_data *data, int i, int j, char c);
 void			init_textures(t_data *data);
+void			init_image(t_data *data);
+void			init_window(t_data *data);
 
 /// EXIT
 void			err_msg(char *str, t_data *data);
@@ -152,6 +154,19 @@ void			parse_textures(char *line, t_data *data, char **to_free);
 /// RENDER
 void			render(t_data *data);
 void			render_scene(t_data *data);
+
+/// RAYCASTING
+
+void			calculate_wall(t_data *data, t_ray *ray);
+void			perform_dda(t_data *data, t_ray *ray);
+void			calculate_step(t_data *data, t_ray *ray);
+void			init_ray(t_data *data, t_ray *ray, int i);
+
+/// DRAW
+
+void			draw_wall(t_data *data, t_ray *ray, int x);
+void			draw_ceiling(t_data *data);
+void			draw_floor(t_data *data);
 
 /// BONUS
 void			draw_minimap(t_data *data);

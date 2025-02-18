@@ -34,6 +34,8 @@ C_FILE		=	main/main							\
 				render/move							\
 				render/door							\
 				render/key_handler					\
+				render/raycasting					\
+				render/draw_textures				\
 
 SRC_DIR		=	./srcs/
 
