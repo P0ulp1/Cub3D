@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 22:34:33 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/18 13:46:54 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:19:46 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,44 +40,33 @@ void	close_door(t_data *data)
 	}
 }
 
+static void	check_door(t_data *data, int x, int y)
+{
+	int	map_width;
+
+	if (y < 0 || !data->scene->map[y])
+		return ;
+	map_width = (int)ft_strlen(data->scene->map[y]);
+	if (x >= 0 && x < map_width && data->scene->map[y][x] == 'D')
+		data->scene->map[y][x] = 'P';
+}
+
 void	open_door(t_data *data)
 {
 	int	x;
 	int	y;
-	int	dx;
-	int	dy;
-	int	map_height;
-	int	map_width;
+	int	range;
 
 	x = (int)data->player.x;
 	y = (int)data->player.y;
-	map_height = 0;
-	while (data->scene->map[map_height])
-		map_height++;
-	dx = -2;
-	while (dx <= 2)
+	range = -2;
+	while (range <= 2)
 	{
-		if (dx != 0)
+		if (range != 0)
 		{
-			map_width = (int)ft_strlen(data->scene->map[y]);
-			if (x + dx >= 0 && x + dx < map_width && data->scene->map[y][x
-				+ dx] == 'D')
-				data->scene->map[y][x + dx] = 'P';
+			check_door(data, x + range, y);
+			check_door(data, x, y + range);
 		}
-		dx += 1;
-	}
-	dy = -2;
-	while (dy <= 2)
-	{
-		if (dy != 0)
-		{
-			if (y + dy >= 0 && y + dy < map_height)
-			{
-				map_width = (int)ft_strlen(data->scene->map[y + dy]);
-				if (x < map_width && data->scene->map[y + dy][x] == 'D')
-					data->scene->map[y + dy][x] = 'P';
-			}
-		}
-		dy += 1;
+		range++;
 	}
 }
