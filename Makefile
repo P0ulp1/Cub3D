@@ -9,7 +9,7 @@ NAME		=	cub3D
 
 CC			=	cc
 
-FLAG		=	-Wall -Werror -Wextra -g3 -lm -I./minilibx-linux -I./includes
+FLAG		=	-Wall -Werror -Wextra -g3 -I./minilibx-linux -I./includes
 
 LIBFT_PATH	=	./libft/
 
@@ -60,7 +60,7 @@ ${MLX_LIB}:
 
 $(NAME): $(LIBFT_LIB) ${MLX_LIB} $(OBJ)
 	@echo "$(BLUE)Compiling $(NAME)...$(RESET)"
-	@$(CC) $(OBJ) $(LIBFT_LIB) ${MLX_LIB} $(FLAG) -o $(NAME)
+	@$(CC) $(OBJ) $(LIBFT_LIB) ${MLX_LIB} $(FLAG) -lm -o $(NAME)
 	@echo "$(GREEN)Executable $(NAME) created$(RESET)"
 
 clean:
