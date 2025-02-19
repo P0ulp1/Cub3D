@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:40:29 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/19 08:59:59 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/02/19 09:24:37 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	mouse_handler(int x, int y, t_data *data)
 {
 	static int	old_x = 700 / 2;
 
+	// 700 = WIDTH
 	if (x > data->image.width - 20)
 	{
 		x = 20;

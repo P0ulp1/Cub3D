@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 22:16:36 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/19 09:00:47 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/02/19 09:24:19 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	move_player(t_data *data)
 		moved += rotate_player(data, -1);
 	if (data->door_open == 1)
 		moved += 1;
-	if (moved && data->win && data->mlx)
+	if (moved)
 		redraw_screen(data);
 	return (moved);
 }
