@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:17:40 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/18 11:32:56 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/19 07:34:26 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	free_scene(t_data *data)
 {
 	int	i;
 
-	i = 0;
 	if (data->scene)
 	{
 		if (data->scene->north_texture)
@@ -37,13 +36,13 @@ void	free_scene(t_data *data)
 			free(data->scene->west_texture);
 		if (data->scene->east_texture)
 			free(data->scene->east_texture);
+		if (data->scene->door_texture)
+			free(data->scene->door_texture);
 		if (data->scene->map)
 		{
-			while (data->scene->map[i])
-			{
+			i = -1;
+			while (data->scene->map[++i])
 				free(data->scene->map[i]);
-				i++;
-			}
 			free(data->scene->map);
 		}
 		free(data->scene);
