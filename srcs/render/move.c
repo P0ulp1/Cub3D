@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 22:16:36 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/19 09:26:07 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/02/19 20:19:58 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,9 @@ static int	valid_move(t_data *data, double new_x, double new_y)
 	return (moved);
 }
 
-static int	move_player_position(t_data *data, char mode)
+static int	move_player_position(t_data *data, char mode, double new_x,
+		double new_y)
 {
-	double	new_x;
-	double	new_y;
-
 	if (mode == 'L')
 	{
 		new_x = data->player.x + data->player.dir_y * data->move_speed;
@@ -89,17 +87,21 @@ void	redraw_screen(t_data *data)
 
 int	move_player(t_data *data)
 {
-	int	moved;
+	int		moved;
+	double	new_x;
+	double	new_y;
 
+	new_x = 0;
+	new_y = 0;
 	moved = 0;
 	if (data->player.move_y == 1)
-		moved += move_player_position(data, 'F');
+		moved += move_player_position(data, 'F', new_x, new_y);
 	if (data->player.move_y == -1)
-		moved += move_player_position(data, 'B');
+		moved += move_player_position(data, 'B', new_x, new_y);
 	if (data->player.move_x == -1)
-		moved += move_player_position(data, 'L');
+		moved += move_player_position(data, 'L', new_x, new_y);
 	if (data->player.move_x == 1)
-		moved += move_player_position(data, 'R');
+		moved += move_player_position(data, 'R', new_x, new_y);
 	if (data->player.rotate == 1)
 		moved += rotate_player(data, 1);
 	if (data->player.rotate == -1)
