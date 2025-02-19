@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:40:29 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/19 04:14:26 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/19 04:35:47 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	key_handler(int key, t_data *data)
 		data->player.rotate -= 1;
 	if (key == XK_Right)
 		data->player.rotate += 1;
+	if (key == XK_Shift_L)
+		data->move_speed = 0.009;
 	return (0);
 }
 
@@ -43,5 +45,7 @@ int	key_release(int key, t_data *data)
 		data->player.rotate = 0;
 	if (key == XK_space)
 		data->door_open = 0;
+	if (key == XK_Shift_L)
+		data->move_speed = 0.004;
 	return (0);
 }
