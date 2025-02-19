@@ -1,8 +1,8 @@
-NO ./assets/made_wall_n.xpm
-SO ./assets/made_wall_s.xpm
-WE ./assets/made_wall_w.xpm
-EA ./assets/made_wall_e.xpm
-DOOR ./assets/made_door.xpm
+NO ./textures/made/made_wall_n.xpm
+SO ./textures/made/made_wall_s.xpm
+WE ./textures/made/made_wall_w.xpm
+EA ./textures/made/made_wall_e.xpm
+DOOR ./textures/made/made_door.xpm
 
 F 64,64,64
 C 182,182,182
