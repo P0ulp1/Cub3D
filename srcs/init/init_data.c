@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:47:49 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/18 14:38:14 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/19 04:16:14 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	init_data(t_data *data)
 	data->textures[EAST] = NULL;
 	data->textures[DOOR] = NULL;
 	data->has_door = 0;
+	data->door_open = 0;
 	data->move_speed = 0;
 	data->rot_speed = 0;
 	data->image.img = NULL;

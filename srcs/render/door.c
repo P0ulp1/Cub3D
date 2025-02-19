@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 22:34:33 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/18 14:19:46 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/19 04:12:17 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	open_door(t_data *data)
 	int	y;
 	int	range;
 
+	data->door_open = 1;
 	x = (int)data->player.x;
 	y = (int)data->player.y;
 	range = -2;

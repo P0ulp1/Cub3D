@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/18 14:49:10 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/19 04:12:41 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ typedef struct s_data
 	t_image		image;
 	t_image		*textures[5];
 	int			has_door;
+	int			door_open;
 	double		move_speed;
 	double		rot_speed;
 }				t_data;

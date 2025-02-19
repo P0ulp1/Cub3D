@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:40:29 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/18 12:40:48 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/19 04:14:26 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ int	key_release(int key, t_data *data)
 		data->player.move_x = 0;
 	if (key == XK_Right || key == XK_Left)
 		data->player.rotate = 0;
+	if (key == XK_space)
+		data->door_open = 0;
 	return (0);
 }

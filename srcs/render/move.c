@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 22:16:36 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/18 14:38:58 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/19 04:14:56 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ int	move_player(t_data *data)
 		moved += rotate_player(data, 1);
 	if (data->player.rotate == -1)
 		moved += rotate_player(data, -1);
+	if (data->door_open == 1)
+		moved += 1;
 	if (moved && data->win && data->mlx)
 	{
 		close_door(data);
