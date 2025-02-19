@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:42:31 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/18 14:26:11 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/19 09:01:11 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	setup_hooks(t_data *data)
 	mlx_hook(data->win, 17, 0, close_game, data);
 	mlx_hook(data->win, KeyPress, KeyPressMask, key_handler, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release, data);
+	mlx_hook(data->win, MotionNotify, PointerMotionMask, mouse_handler, data);
 	mlx_loop_hook(data->mlx, move_player, data);
 }
 

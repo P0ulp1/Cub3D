@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/19 04:12:41 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/19 09:00:53 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct s_data
 	int			door_open;
 	double		move_speed;
 	double		rot_speed;
+	int			mouse;
 }				t_data;
 
 typedef struct s_minimap
@@ -179,11 +180,15 @@ void			draw_floor(t_data *data);
 void			draw_minimap(t_data *data);
 void			open_door(t_data *data);
 void			close_door(t_data *data);
+int				mouse_handler(int x, int y, t_data *data);
 
 /// MOVE
 
 int				key_handler(int key, t_data *data);
 int				key_release(int key, t_data *data);
 int				move_player(t_data *data);
+int				rotate_player(t_data *data, double direction);
+
+void			redraw_screen(t_data *data);
 
 #endif

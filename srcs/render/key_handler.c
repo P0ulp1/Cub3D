@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:40:29 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/19 04:35:47 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/02/19 08:59:59 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,30 @@ int	key_release(int key, t_data *data)
 		data->door_open = 0;
 	if (key == XK_Shift_L)
 		data->move_speed = 0.004;
+	return (0);
+}
+
+int	mouse_handler(int x, int y, t_data *data)
+{
+	static int	old_x = 700 / 2;
+
+	if (x > data->image.width - 20)
+	{
+		x = 20;
+		mlx_mouse_move(data->mlx, data->win, x, y);
+	}
+	if (x < 20)
+	{
+		x = data->image.width - 20;
+		mlx_mouse_move(data->mlx, data->win, x, y);
+	}
+	if (x == old_x)
+		return (0);
+	else if (x < old_x)
+		rotate_player(data, -1);
+	else if (x > old_x)
+		rotate_player(data, 1);
+	old_x = x;
+	redraw_screen(data);
 	return (0);
 }
