@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:40:29 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/19 09:24:37 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/02/20 12:53:09 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	key_handler(int key, t_data *data)
 	if (key == XK_Right)
 		data->player.rotate += 1;
 	if (key == XK_Shift_L)
-		data->move_speed = 0.009;
+		data->move_speed = 0.09;
 	return (0);
 }
 
@@ -46,13 +46,13 @@ int	key_release(int key, t_data *data)
 	if (key == XK_space)
 		data->door_open = 0;
 	if (key == XK_Shift_L)
-		data->move_speed = 0.004;
+		data->move_speed = 0.04;
 	return (0);
 }
 
 int	mouse_handler(int x, int y, t_data *data)
 {
-	static int	old_x = 700 / 2;
+	static int	old_x = 1920 / 2;
 
 	// 700 = WIDTH
 	if (x > data->image.width - 20)
