@@ -6,7 +6,7 @@
 /*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:40:29 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/20 12:53:09 by pbailly          ###   ########.fr       */
+/*   Updated: 2025/03/03 18:25:26 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int	mouse_handler(int x, int y, t_data *data)
 	else if (x > old_x)
 		rotate_player(data, 1);
 	old_x = x;
-	redraw_screen(data);
+	if (data->player.move_y == 0 && data->player.move_x == 0
+		&& data->player.rotate == 0)
+		redraw_screen(data);
 	return (0);
 }
