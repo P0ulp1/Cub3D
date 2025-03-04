@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx_image.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:02:23 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/20 12:55:55 by pbailly          ###   ########.fr       */
+/*   Updated: 2025/03/04 17:33:25 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,18 @@ void	init_textures(t_data *data)
 	if (!data->textures[NORTH] || !data->textures[SOUTH]
 		|| !data->textures[EAST] || !data->textures[WEST])
 		err_msg("Failed to load textures\n", data);
+	if (!ft_strcmp(data->scene->south_texture, "./textures/flam.xpm"))
+	{
+		data->anim_textures[0] = load_texture(data, data->scene->south_texture);
+		data->anim_textures[1] = load_texture(data, "./textures/south_1.xpm");
+		data->anim_textures[2] = load_texture(data, "./textures/south_2.xpm");
+		data->anim_textures[3] = load_texture(data, "./textures/south_3.xpm");
+		data->anim_frame = 0;
+		data->last_anim_update = 0;
+		if (!data->anim_textures[0] || !data->anim_textures[1]
+			|| !data->anim_textures[2] || !data->anim_textures[3])
+			err_msg("Failed to load textures\n", data);
+	}
 }
 
 void	init_window(t_data *data)

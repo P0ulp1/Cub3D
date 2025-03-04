@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/02/19 09:00:53 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/03/04 17:03:47 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
+# include <sys/time.h>
 
 # undef BUFFER_SIZE
 # define BUFFER_SIZE 4096
@@ -115,6 +116,9 @@ typedef struct s_data
 	double		move_speed;
 	double		rot_speed;
 	int			mouse;
+	t_image *anim_textures[4]; // Les textures animées pour SOUTH
+	int			anim_frame;
+	double		last_anim_update;
 }				t_data;
 
 typedef struct s_minimap

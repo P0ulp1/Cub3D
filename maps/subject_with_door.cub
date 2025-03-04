@@ -1,5 +1,5 @@
 NO ./textures/made/made_wall_n.xpm
-SO ./textures/made/made_wall_s.xpm
+SO ./textures/flam.xpm
 WE ./textures/made/made_wall_w.xpm
 EA ./textures/made/made_wall_e.xpm
 DOOR ./textures/made/made_door.xpm
