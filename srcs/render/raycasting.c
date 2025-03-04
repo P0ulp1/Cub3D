@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:56:34 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/18 14:26:35 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/04 18:41:24 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,9 @@ void	select_wall_texture(t_data *data, t_ray *ray)
 	}
 	else
 	{
-		if (ray->step_y > 0)
+		if (ray->step_y > 0 && data->has_animation == 1)
+			ray->texture = data->anim_textures[data->anim_frame];
+		else if (ray->step_y > 0 && data->has_animation == 0)
 			ray->texture = data->textures[SOUTH];
 		else
 			ray->texture = data->textures[NORTH];

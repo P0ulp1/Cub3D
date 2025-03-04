@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:17:40 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/03 18:06:24 by pbailly          ###   ########.fr       */
+/*   Updated: 2025/03/04 18:40:33 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,24 @@ static void	free_textures(t_data *data)
 		{
 			mlx_destroy_image(data->mlx, data->textures[i]->img);
 			free(data->textures[i]);
+			data->textures[i] = NULL;
+		}
+		i++;
+	}
+}
+
+static void	free_anim_textures(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (data->anim_textures[i])
+		{
+			mlx_destroy_image(data->mlx, data->anim_textures[i]->img);
+			free(data->anim_textures[i]);
+			data->anim_textures[i] = NULL;
 		}
 		i++;
 	}
@@ -69,6 +87,8 @@ void	free_data(t_data *data)
 {
 	free_scene(data);
 	free_textures(data);
+	// if (data->has_animation == 1)
+	free_anim_textures(data);
 	if (data->image.img)
 	{
 		mlx_destroy_image(data->mlx, data->image.img);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:47:49 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/19 04:16:14 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/04 18:38:59 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	init_scene(t_data *data)
 {
+	data->scene = NULL;
 	data->scene = malloc(sizeof(t_scene));
 	if (!data->scene)
 		err_msg("Memory allocation failed\n", data);
@@ -31,16 +32,23 @@ static void	init_scene(t_data *data)
 	data->scene->map = NULL;
 }
 
-void	init_data(t_data *data)
+static void	init_null_textures(t_data *data)
 {
-	data->mlx = NULL;
-	data->win = NULL;
-	data->scene = NULL;
 	data->textures[NORTH] = NULL;
 	data->textures[SOUTH] = NULL;
 	data->textures[WEST] = NULL;
 	data->textures[EAST] = NULL;
 	data->textures[DOOR] = NULL;
+	data->anim_textures[0] = NULL;
+	data->anim_textures[1] = NULL;
+	data->anim_textures[2] = NULL;
+	data->anim_textures[3] = NULL;
+}
+
+void	init_data(t_data *data)
+{
+	data->mlx = NULL;
+	data->win = NULL;
 	data->has_door = 0;
 	data->door_open = 0;
 	data->move_speed = 0;
@@ -52,5 +60,9 @@ void	init_data(t_data *data)
 	data->image.bpp = 0;
 	data->image.size_line = 0;
 	data->image.endian = 0;
+	data->anim_frame = 0;
+	data->last_anim_update = 0;
+	data->has_animation = 0;
+	init_null_textures(data);
 	init_scene(data);
 }

@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/03/04 17:03:47 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/03/04 18:30:56 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,14 +111,15 @@ typedef struct s_data
 	t_player	player;
 	t_image		image;
 	t_image		*textures[5];
+	t_image		*anim_textures[4];
 	int			has_door;
 	int			door_open;
 	double		move_speed;
 	double		rot_speed;
 	int			mouse;
-	t_image *anim_textures[4]; // Les textures animées pour SOUTH
 	int			anim_frame;
 	double		last_anim_update;
+	int			has_animation;
 }				t_data;
 
 typedef struct s_minimap
