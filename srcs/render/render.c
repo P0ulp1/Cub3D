@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:42:31 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/04 17:35:13 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/03/04 17:58:06 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,20 @@ static void	setup_hooks(t_data *data)
 	mlx_loop_hook(data->mlx, move_player, data);
 }
 
-double	get_current_time(void)
+int	update_south_animation(t_data *data)
 {
-	struct timeval	tv;
+	double		anim_speed;
+	static int	frame_count = 0;
 
-	gettimeofday(&tv, NULL);
-	return (tv.tv_sec + tv.tv_usec / 1000000.0);
-}
-
-int	update_south_texture(t_data *data)
-{
-	double	anim_speed;
-	double	current_time;
-
-	current_time = get_current_time();
-	anim_speed = 0.2; // Change toutes les 200ms
-	if (current_time - data->last_anim_update > anim_speed)
+	anim_speed = 20;
+	frame_count++;
+	if (frame_count >= anim_speed)
 	{
+		frame_count = 0;
 		data->anim_frame++;
-		if (data->anim_frame >= 4) // 4 frames d'animation
+		if (data->anim_frame >= 4)
 			data->anim_frame = 0;
 		data->textures[SOUTH] = data->anim_textures[data->anim_frame];
-		data->last_anim_update = current_time;
 	}
 	return (0);
 }
@@ -56,7 +48,7 @@ void	render_scene(t_data *data)
 	draw_ceiling(data);
 	draw_floor(data);
 	if (!ft_strcmp(data->scene->south_texture, "./textures/flam.xpm"))
-		update_south_texture(data);
+		update_south_animation(data);
 	i = 0;
 	while (i < data->image.width)
 	{
@@ -78,8 +70,6 @@ void	render(t_data *data)
 	render_scene(data);
 	draw_minimap(data);
 	setup_hooks(data);
-	// if (!ft_strcmp(data->scene->south_texture, "./textures/flam.xpm"))
-	// 	mlx_loop_hook(data->mlx, update_south_texture, data);
 	mlx_put_image_to_window(data->mlx, data->win, data->image.img, 0, 0);
 	mlx_loop(data->mlx);
 }
