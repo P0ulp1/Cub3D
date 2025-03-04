@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:17:40 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/04 18:40:33 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/03/04 18:47:59 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	free_data(t_data *data)
 {
 	free_scene(data);
 	free_textures(data);
-	// if (data->has_animation == 1)
 	free_anim_textures(data);
 	if (data->image.img)
 	{

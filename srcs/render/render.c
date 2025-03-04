@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:42:31 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/04 18:42:09 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/03/04 18:43:22 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	setup_hooks(t_data *data)
 	mlx_loop_hook(data->mlx, move_player, data);
 }
 
-int	update_south_animation(t_data *data)
+static void	update_south_animation(t_data *data)
 {
 	static int	frame_count = 0;
 
@@ -32,7 +32,6 @@ int	update_south_animation(t_data *data)
 		frame_count = 0;
 		data->anim_frame = (data->anim_frame + 1) % 4;
 	}
-	return (0);
 }
 
 void	render_scene(t_data *data)
