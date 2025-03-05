@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:17:40 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/04 18:47:59 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/03/05 13:00:43 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	free_anim_textures(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < 4)
+	while (i < 6)
 	{
 		if (data->anim_textures[i])
 		{
