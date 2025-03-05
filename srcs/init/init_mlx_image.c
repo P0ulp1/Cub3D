@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx_image.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:02:23 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/04 18:30:42 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/03/05 12:31:30 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,21 @@ static t_image	*load_texture(t_data *data, char *path)
 	return (texture);
 }
 
+void	init_anim_textures(t_data *data)
+{
+	data->anim_textures[0] = load_texture(data, "./textures/flam.xpm");
+	data->anim_textures[1] = load_texture(data, "./textures/south_1.xpm");
+	data->anim_textures[2] = load_texture(data, "./textures/south_2.xpm");
+	data->anim_textures[3] = load_texture(data, "./textures/south_3.xpm");
+	data->anim_textures[4] = load_texture(data, "./textures/south_4.xpm");
+	data->anim_textures[5] = load_texture(data, "./textures/south_5.xpm");
+	data->has_animation = 1;
+	if (!data->anim_textures[0] || !data->anim_textures[1]
+		|| !data->anim_textures[2] || !data->anim_textures[3]
+		|| !data->anim_textures[4] || !data->anim_textures[5])
+		err_msg("Failed to load textures\n", data);
+}
+
 void	init_textures(t_data *data)
 {
 	data->textures[NORTH] = load_texture(data, data->scene->north_texture);
@@ -46,16 +61,7 @@ void	init_textures(t_data *data)
 		|| !data->textures[EAST] || !data->textures[WEST])
 		err_msg("Failed to load textures\n", data);
 	if (!ft_strcmp(data->scene->south_texture, "./textures/flam.xpm"))
-	{
-		data->anim_textures[0] = load_texture(data, "./textures/flam.xpm");
-		data->anim_textures[1] = load_texture(data, "./textures/south_1.xpm");
-		data->anim_textures[2] = load_texture(data, "./textures/south_2.xpm");
-		data->anim_textures[3] = load_texture(data, "./textures/south_3.xpm");
-		data->has_animation = 1;
-		if (!data->anim_textures[0] || !data->anim_textures[1]
-			|| !data->anim_textures[2] || !data->anim_textures[3])
-			err_msg("Failed to load textures\n", data);
-	}
+		init_anim_textures(data);
 }
 
 void	init_window(t_data *data)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/03/04 18:30:56 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/03/05 12:31:41 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ typedef struct s_data
 	t_player	player;
 	t_image		image;
 	t_image		*textures[5];
-	t_image		*anim_textures[4];
+	t_image		*anim_textures[6];
 	int			has_door;
 	int			door_open;
 	double		move_speed;
