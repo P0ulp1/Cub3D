@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:02:23 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/05 13:40:52 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/05 13:52:31 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ static t_image	*load_texture(t_data *data, char *path)
 
 void	init_anim_textures(t_data *data)
 {
-	data->anim_textures[0] = load_texture(data, "./textures/flam.xpm");
-	data->anim_textures[1] = load_texture(data, "./textures/south_1.xpm");
-	data->anim_textures[2] = load_texture(data, "./textures/south_2.xpm");
-	data->anim_textures[3] = load_texture(data, "./textures/south_3.xpm");
-	data->anim_textures[4] = load_texture(data, "./textures/south_4.xpm");
-	data->anim_textures[5] = load_texture(data, "./textures/south_5.xpm");
+	data->anim_textures[0] = load_texture(data, "./textures/torch_0.xpm");
+	data->anim_textures[1] = load_texture(data, "./textures/torch_1.xpm");
+	data->anim_textures[2] = load_texture(data, "./textures/torch_2.xpm");
+	data->anim_textures[3] = load_texture(data, "./textures/torch_3.xpm");
+	data->anim_textures[4] = load_texture(data, "./textures/torch_4.xpm");
+	data->anim_textures[5] = load_texture(data, "./textures/torch_5.xpm");
 	data->has_animation = 1;
 	if (!data->anim_textures[0] || !data->anim_textures[1]
 		|| !data->anim_textures[2] || !data->anim_textures[3]
@@ -60,7 +60,8 @@ void	init_textures(t_data *data)
 	if (!data->textures[NORTH] || !data->textures[SOUTH]
 		|| !data->textures[EAST] || !data->textures[WEST])
 		err_msg("Failed to load textures\n", data);
-	if (!ft_strcmp(data->scene->south_texture, "./textures/brick.xpm"))
+	if (!ft_strcmp(data->scene->south_texture, "./textures/brick.xpm")
+		&& !ft_strcmp(data->scene->north_texture, "./textures/brick.xpm"))
 		init_anim_textures(data);
 }
 
