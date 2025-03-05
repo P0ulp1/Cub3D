@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:02:23 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/05 12:31:30 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/05 13:40:52 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	init_textures(t_data *data)
 	if (!data->textures[NORTH] || !data->textures[SOUTH]
 		|| !data->textures[EAST] || !data->textures[WEST])
 		err_msg("Failed to load textures\n", data);
-	if (!ft_strcmp(data->scene->south_texture, "./textures/flam.xpm"))
+	if (!ft_strcmp(data->scene->south_texture, "./textures/brick.xpm"))
 		init_anim_textures(data);
 }
 

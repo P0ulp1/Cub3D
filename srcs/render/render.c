@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:42:31 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/05 12:32:59 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/05 13:32:30 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	update_south_animation(t_data *data)
 	static int	frame_count = 0;
 
 	frame_count++;
-	if (frame_count >= 20)
+	if (frame_count >= 7)
 	{
 		frame_count = 0;
 		data->anim_frame = (data->anim_frame + 1) % 6;
