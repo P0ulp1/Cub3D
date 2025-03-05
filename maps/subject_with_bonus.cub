@@ -4,8 +4,8 @@ WE ./textures/brick.xpm
 EA ./textures/brick.xpm
 DOOR ./textures/made/made_door.xpm
 
-F 64,64,64
-C 182,182,182
+F 86,52,44
+C 153,63,40
 
         1111111111111111111111111
         1000000000110000000000001
