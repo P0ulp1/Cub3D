@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:40:29 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/04 17:57:39 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/03/06 09:55:20 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ int	mouse_handler(int x, int y, t_data *data)
 	else if (x > old_x)
 		rotate_player(data, 1);
 	old_x = x;
-	if (data->player.move_y == 0 && data->player.move_x == 0
-		&& data->player.rotate == 0)
-		redraw_screen(data);
+	// if (data->player.move_y == 0 && data->player.move_x == 0
+	// 	&& data->player.rotate == 0)
+	// 	redraw_screen(data);
 	return (0);
 }
