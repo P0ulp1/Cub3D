@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:02:23 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/05 13:52:31 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/06 10:00:32 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,10 @@ void	init_window(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		err_msg("Failed to initialize MLX\n", data);
-	mlx_get_screen_size(data->mlx, &data->image.width, &data->image.height);
-	data->image.width = 1920;
-	data->image.height = 1080;
-	/// A MODIFIER
-	data->move_speed = 0.04;
-	data->rot_speed = 0.03;
-	// data->move_speed = 0.03 * (data->image.width / 800.0);
-	// data->rot_speed = 0.06 * (data->image.width / 800.0);
+	data->image.width = WIDTH;
+	data->image.height = HEIGHT;
+	data->move_speed = MOVSPEED;
+	data->rot_speed = ROTSPEED;
 	data->win = mlx_new_window(data->mlx, data->image.width, data->image.height,
 			"SUPER JEU DE FOU");
 	if (!data->win)

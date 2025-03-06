@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/03/05 12:31:41 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/06 10:00:08 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@
 # define BUFFER_SIZE 4096
 
 # define MS 8 // minimap square size
+
+# define WIDTH 1920
+# define HEIGHT 1080
+
+# define MOVSPEED 0.04
+# define ROTSPEED 0.03
 
 /// COLORS
 

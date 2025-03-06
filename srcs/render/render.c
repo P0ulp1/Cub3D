@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:42:31 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/05 13:32:30 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/06 09:58:11 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	setup_hooks(t_data *data)
 	mlx_loop_hook(data->mlx, move_player, data);
 }
 
-static void	update_south_animation(t_data *data)
+static void	update_animation(t_data *data)
 {
 	static int	frame_count = 0;
 
@@ -42,7 +42,7 @@ void	render_scene(t_data *data)
 	draw_ceiling(data);
 	draw_floor(data);
 	if (data->has_animation == 1)
-		update_south_animation(data);
+		update_animation(data);
 	i = 0;
 	while (i < data->image.width)
 	{

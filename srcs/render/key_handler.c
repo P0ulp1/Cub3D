@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:40:29 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/06 09:55:20 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/06 10:01:35 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	key_handler(int key, t_data *data)
 	if (key == XK_Right)
 		data->player.rotate += 1;
 	if (key == XK_Shift_L)
-		data->move_speed = 0.09;
+		data->move_speed = MOVSPEED * 2;
 	return (0);
 }
 
@@ -46,15 +46,14 @@ int	key_release(int key, t_data *data)
 	if (key == XK_space)
 		data->door_open = 0;
 	if (key == XK_Shift_L)
-		data->move_speed = 0.04;
+		data->move_speed = MOVSPEED;
 	return (0);
 }
 
 int	mouse_handler(int x, int y, t_data *data)
 {
-	static int	old_x = 1920 / 2;
+	static int	old_x = WIDTH / 2;
 
-	// 700 = WIDTH
 	if (x > data->image.width - 20)
 	{
 		x = 20;
@@ -72,8 +71,5 @@ int	mouse_handler(int x, int y, t_data *data)
 	else if (x > old_x)
 		rotate_player(data, 1);
 	old_x = x;
-	// if (data->player.move_y == 0 && data->player.move_x == 0
-	// 	&& data->player.rotate == 0)
-	// 	redraw_screen(data);
 	return (0);
 }
