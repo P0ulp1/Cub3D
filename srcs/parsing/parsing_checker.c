@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_checker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:11:32 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/18 11:43:05 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/06 12:16:05 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,35 +66,6 @@ void	check_textures_exist(t_data *data)
 	{
 		if (!data->scene->door_texture)
 			err_msg("Missing door texture declaration\n", data);
-	}
-}
-
-void	check_textures_files(t_data *data)
-{
-	int	fd;
-
-	fd = open(data->scene->north_texture, O_RDONLY);
-	if (fd < 0)
-		err_msg("Cannot open north texture file\n", data);
-	close(fd);
-	fd = open(data->scene->south_texture, O_RDONLY);
-	if (fd < 0)
-		err_msg("Cannot open south texture file\n", data);
-	close(fd);
-	fd = open(data->scene->west_texture, O_RDONLY);
-	if (fd < 0)
-		err_msg("Cannot open west texture file\n", data);
-	close(fd);
-	fd = open(data->scene->east_texture, O_RDONLY);
-	if (fd < 0)
-		err_msg("Cannot open east texture file\n", data);
-	close(fd);
-	if (data->has_door)
-	{
-		fd = open(data->scene->door_texture, O_RDONLY);
-		if (fd < 0)
-			err_msg("Cannot open door texture file\n", data);
-		close(fd);
 	}
 }
 

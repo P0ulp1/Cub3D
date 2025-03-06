@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx_image.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:02:23 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/06 10:00:32 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/06 12:15:53 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 static t_image	*load_texture(t_data *data, char *path)
 {
 	t_image	*texture;
+	int		fd;
 
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		err_msg("Cannot open texture file\n", data);
+	close(fd);
 	texture = malloc(sizeof(t_image));
 	if (!texture)
 		err_msg("Failed to allocate memory for texture\n", data);
