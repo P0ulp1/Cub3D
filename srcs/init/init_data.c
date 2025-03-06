@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:47:49 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/04 18:38:59 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:24:00 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static void	init_null_textures(t_data *data)
 	data->anim_textures[1] = NULL;
 	data->anim_textures[2] = NULL;
 	data->anim_textures[3] = NULL;
+	data->anim_textures[4] = NULL;
+	data->anim_textures[5] = NULL;
 }
 
 void	init_data(t_data *data)
