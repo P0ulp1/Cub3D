@@ -6,7 +6,7 @@
 /*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 12:47:49 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/06 12:24:00 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:25:27 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	init_data(t_data *data)
 	data->image.size_line = 0;
 	data->image.endian = 0;
 	data->anim_frame = 0;
-	data->last_anim_update = 0;
 	data->has_animation = 0;
 	init_null_textures(data);
 	init_scene(data);
