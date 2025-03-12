@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/03/06 12:25:30 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/03/12 14:11:44 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 
-# define MOVSPEED 0.04
-# define ROTSPEED 0.03
+# define MOVSPEED 0.03
+# define ROTSPEED 0.02
 
-# define ANIMSPEED 5
+# define ANIMSPEED 10
 
 /// COLORS
 
