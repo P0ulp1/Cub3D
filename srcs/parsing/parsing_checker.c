@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:11:32 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/18 11:15:10 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:42:09 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ void	check_declarations(char **lines, t_data *data)
 	i = 0;
 	while (lines[i])
 	{
-		if (ft_strstr(lines[i], "NO "))
+		if (ft_strstr(lines[i], "NO") && ft_isspace(lines[i][2]))
 			counts[0]++;
-		else if (ft_strstr(lines[i], "SO "))
+		else if (ft_strstr(lines[i], "SO") && ft_isspace(lines[i][2]))
 			counts[1]++;
-		else if (ft_strstr(lines[i], "WE "))
+		else if (ft_strstr(lines[i], "WE") && ft_isspace(lines[i][2]))
 			counts[2]++;
-		else if (ft_strstr(lines[i], "EA "))
+		else if (ft_strstr(lines[i], "EA") && ft_isspace(lines[i][2]))
 			counts[3]++;
-		else if (ft_strstr(lines[i], "F "))
+		else if (ft_strstr(lines[i], "F") && ft_isspace(lines[i][1]))
 			counts[4]++;
-		else if (ft_strstr(lines[i], "C "))
+		else if (ft_strstr(lines[i], "C") && ft_isspace(lines[i][1]))
 			counts[5]++;
 		i++;
 	}
