@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:21:46 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/18 14:16:16 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:22:21 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	parse_color_component(char *str, t_data *data, char **to_free,
 	char	*trimmed;
 	int		color_component;
 
-	trimmed = ft_strtrim(str, " \t\n\r");
+	trimmed = ft_strtrim(str, " \t\n\r\v");
 	if (!trimmed || trimmed[0] == '\0' || !is_valid_number(trimmed))
 	{
 		free(trimmed);
