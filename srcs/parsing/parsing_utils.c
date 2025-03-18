@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:21:46 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/18 14:09:19 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:16:16 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static int	is_valid_number(char *str)
 	return (1);
 }
 
-static int	parse_color_component(char *str, t_data *data, char **to_free)
+static int	parse_color_component(char *str, t_data *data, char **to_free,
+		char **str_free)
 {
 	char	*trimmed;
 	int		color_component;
@@ -35,6 +36,7 @@ static int	parse_color_component(char *str, t_data *data, char **to_free)
 	if (!trimmed || trimmed[0] == '\0' || !is_valid_number(trimmed))
 	{
 		free(trimmed);
+		free_split(str_free);
 		free_split(to_free);
 		err_msg("Invalid color component\n", data);
 	}
@@ -42,6 +44,7 @@ static int	parse_color_component(char *str, t_data *data, char **to_free)
 	free(trimmed);
 	if (color_component < 0 || color_component > 255)
 	{
+		free_split(str_free);
 		free_split(to_free);
 		err_msg("Color out of range (0-255)\n", data);
 	}
@@ -63,7 +66,7 @@ static void	parse_color(char *line, int *color, t_data *data, char **to_free)
 	i = 0;
 	while (i < 3)
 	{
-		color[i] = parse_color_component(str[i], data, to_free);
+		color[i] = parse_color_component(str[i], data, to_free, str);
 		i++;
 	}
 	free_split(str);
