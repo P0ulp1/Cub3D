@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:21:46 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/18 09:59:16 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:25:00 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,34 @@ static void	parse_color(char *line, int *color, t_data *data, char **to_free)
 	}
 }
 
+static char	*skip_spaces(char *line)
+{
+	while (*line && !ft_isspace(*line))
+		line++;
+	while (*line && ft_isspace(*line))
+		line++;
+	return (line);
+}
+
 void	parse_textures(char *line, t_data *data, char **to_free)
 {
 	while (ft_isspace(*line))
 		line++;
-	if (ft_strncmp(line, "NO ", 3) == 0)
-		data->scene->north_texture = ft_strdup(line + 3);
-	else if (ft_strncmp(line, "SO ", 3) == 0)
-		data->scene->south_texture = ft_strdup(line + 3);
-	else if (ft_strncmp(line, "WE ", 3) == 0)
-		data->scene->west_texture = ft_strdup(line + 3);
-	else if (ft_strncmp(line, "EA ", 3) == 0)
-		data->scene->east_texture = ft_strdup(line + 3);
-	else if (ft_strncmp(line, "DOOR ", 5) == 0)
-		data->scene->door_texture = ft_strdup(line + 5);
-	else if (ft_strncmp(line, "F ", 2) == 0)
-		parse_color(line + 2, data->scene->floor_color, data, to_free);
-	else if (ft_strncmp(line, "C ", 2) == 0)
-		parse_color(line + 2, data->scene->ceiling_color, data, to_free);
+	if (!ft_strncmp(line, "NO", 2))
+		data->scene->north_texture = ft_strdup(skip_spaces(line));
+	else if (!ft_strncmp(line, "SO", 2))
+		data->scene->south_texture = ft_strdup(skip_spaces(line));
+	else if (!ft_strncmp(line, "WE", 2))
+		data->scene->west_texture = ft_strdup(skip_spaces(line));
+	else if (!ft_strncmp(line, "EA", 2))
+		data->scene->east_texture = ft_strdup(skip_spaces(line));
+	else if (!ft_strncmp(line, "DOOR", 4))
+		data->scene->door_texture = ft_strdup(skip_spaces(line));
+	else if (!ft_strncmp(line, "F", 1))
+		parse_color(skip_spaces(line), data->scene->floor_color, data, to_free);
+	else if (!ft_strncmp(line, "C", 1))
+		parse_color(skip_spaces(line), data->scene->ceiling_color, data,
+			to_free);
 }
 
 void	parse_map(char **lines, int start, t_data *data)

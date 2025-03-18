@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_checker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:11:32 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/06 12:16:05 by alibaba          ###   ########.fr       */
+/*   Updated: 2025/03/18 11:15:10 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ void	check_declarations(char **lines, t_data *data)
 void	check_textures_exist(t_data *data)
 {
 	if (!data->scene->north_texture || !data->scene->south_texture
-		|| !data->scene->west_texture || !data->scene->east_texture
-		|| !data->scene->floor_color[0] || !data->scene->ceiling_color[0])
+		|| !data->scene->west_texture || !data->scene->east_texture)
 		err_msg("Missing texture or color declaration\n", data);
 	if (data->has_door)
 	{
