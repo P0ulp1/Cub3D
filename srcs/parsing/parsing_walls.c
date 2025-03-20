@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:17:05 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/18 13:47:53 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/20 09:03:29 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ static void	check_vertical_borders(char **map, t_data *data)
 		j = 0;
 		while (ft_isspace(map[i][j]))
 			j++;
-		if (map[i][j] != '1')
+		if (map[i][j] && map[i][j] != '1')
 			err_msg("Map must be surrounded by walls\n", data);
 		j = ft_strlen(map[i]) - 1;
 		while (j >= 0 && ft_isspace(map[i][j]))
 			j--;
-		if (map[i][j] != '1')
+		if (map[i][j] && map[i][j] != '1')
 			err_msg("Map must be surrounded by walls\n", data);
 		i++;
 	}
