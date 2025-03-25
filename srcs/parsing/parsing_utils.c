@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:21:46 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/18 14:29:55 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:17:45 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,11 @@ void	parse_textures(char *line, t_data *data, char **to_free)
 	else if (!ft_strncmp(line, "C", 1))
 		parse_color(ft_skip_space(line + 1), data->scene->ceiling_color, data,
 			to_free);
+	else
+	{
+		free_split(to_free);
+		err_msg("Invalid line\n", data);
+	}
 }
 
 void	parse_map(char **lines, int start, t_data *data)
