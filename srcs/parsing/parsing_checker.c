@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_checker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:11:32 by alibabab          #+#    #+#             */
-/*   Updated: 2025/04/03 12:07:19 by phautena         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:26:27 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ int	check_comma(char *line)
 		if (line[i] == ',')
 			count++;
 	}
-	printf("Comma count: %d\n", count);
 	if (count > 2)
 		return (1);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pbailly <pbailly@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 03:23:57 by alibabab          #+#    #+#             */
-/*   Updated: 2025/02/18 13:21:58 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:24:37 by pbailly          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ static void	set_player_dir_ns(t_data *data, char c)
 	{
 		data->player.dir_x = 0;
 		data->player.dir_y = -1;
-		data->player.plane_x = 0.5;
+		data->player.plane_x = 0.66;
 		data->player.plane_y = 0;
 	}
 	else if (c == 'S')
 	{
 		data->player.dir_x = 0;
 		data->player.dir_y = 1;
-		data->player.plane_x = -0.5;
+		data->player.plane_x = -0.66;
 		data->player.plane_y = 0;
 	}
 }
@@ -37,14 +37,14 @@ static void	set_player_dir_ew(t_data *data, char c)
 		data->player.dir_x = 1;
 		data->player.dir_y = 0;
 		data->player.plane_x = 0;
-		data->player.plane_y = 0.5;
+		data->player.plane_y = 0.66;
 	}
 	else if (c == 'W')
 	{
 		data->player.dir_x = -1;
 		data->player.dir_y = 0;
 		data->player.plane_x = 0;
-		data->player.plane_y = -0.5;
+		data->player.plane_y = -0.66;
 	}
 }
 
