@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_checker.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:11:32 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/25 16:15:50 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/04/03 12:07:19 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,22 @@ void	check_character(t_data *data)
 	}
 	if (player_count != 1)
 		err_msg("Map must contain exactly one player\n", data);
+}
+
+int	check_comma(char *line)
+{
+	int	count;
+	int	i;
+
+	count = 0;
+	i = 0;
+	while (line[i++])
+	{
+		if (line[i] == ',')
+			count++;
+	}
+	printf("Comma count: %d\n", count);
+	if (count > 2)
+		return (1);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:21:46 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/25 16:17:45 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/04/03 12:05:24 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	parse_color(char *line, int *color, t_data *data, char **to_free)
 	int		i;
 
 	str = ft_split(line, ',');
-	if (!str || !str[0] || !str[1] || !str[2] || str[3] != NULL)
+	if (!str || !str[0] || !str[1] || !str[2] || str[3] != NULL || check_comma(line))
 	{
 		free_split(to_free);
 		free_split(str);
