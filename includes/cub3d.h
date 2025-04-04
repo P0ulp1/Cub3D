@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:24:38 by phautena          #+#    #+#             */
-/*   Updated: 2025/04/03 12:05:14 by phautena         ###   ########.fr       */
+/*   Updated: 2025/04/04 23:44:26 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,11 +162,13 @@ void			parsing(char *file, t_data *data);
 void			check_character(t_data *data);
 void			check_declarations(char **lines, t_data *data);
 void			check_wall(char **map, t_data *data);
-void			check_textures_files(t_data *data);
 void			check_textures_exist(t_data *data);
-int			check_comma(char *line);
+void			check_empty_line(char *content, t_data *data);
 
-void				parse_map(char **lines, int start, t_data *data);
+int				check_comma(char *line);
+int				is_not_declaration(char *line);
+
+void			parse_map(char **lines, int start, t_data *data);
 void			parse_textures(char *line, t_data *data, char **to_free);
 
 /// RENDER

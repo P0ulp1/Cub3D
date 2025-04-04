@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:06:33 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/18 13:49:08 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/04/05 00:54:53 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*read_file(int fd, t_data *data)
 	return (content);
 }
 
-static int	is_declaration(char *line)
+int	is_not_declaration(char *line)
 {
 	return (!ft_strstr(line, "NO") && !ft_strstr(line, "SO") && !ft_strstr(line,
 			"WE") && !ft_strstr(line, "EA") && !ft_strstr(line, "F")
@@ -77,7 +77,8 @@ static void	parse_scene(char *content, t_data *data)
 	{
 		while (lines[i] && (lines[i][0] == '\0' || ft_str_isspace(lines[i])))
 			i++;
-		if (lines[i] && ft_strchr(lines[i], '1') && is_declaration(lines[i]))
+		if (lines[i] && ft_strchr(lines[i], '1')
+			&& is_not_declaration(lines[i]))
 		{
 			parse_map(lines, i, data);
 			break ;
@@ -104,6 +105,7 @@ void	parsing(char *file, t_data *data)
 		err_msg("Cannot open file\n", data);
 	content = read_file(fd, data);
 	close(fd);
+	check_empty_line(content, data);
 	parse_scene(content, data);
 	check_wall(data->scene->map, data);
 	check_character(data);

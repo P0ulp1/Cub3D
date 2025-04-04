@@ -6,7 +6,7 @@
 /*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:17:05 by alibabab          #+#    #+#             */
-/*   Updated: 2025/03/20 09:03:29 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/04/05 00:49:32 by alibabab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,33 @@ void	check_wall(char **map, t_data *data)
 	check_horizontal_borders(map, data);
 	check_vertical_borders(map, data);
 	check_inner_walls(map, data);
+}
+
+void	check_empty_line(char *content, t_data *data)
+{
+	int		i;
+	int		in_map;
+	char	*line;
+
+	in_map = 0;
+	line = content;
+	i = -1;
+	while (content[++i])
+	{
+		if (content[i] == '\n')
+		{
+			content[i] = '\0';
+			while (ft_isspace(*line))
+				line++;
+			if (*line && is_not_declaration(line))
+				in_map = 1;
+			if (in_map && *line == '\0')
+			{
+				free(content);
+				err_msg("Invalid line in the map\n", data);
+			}
+			content[i] = '\n';
+			line = content + i + 1;
+		}
+	}
 }
