@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_walls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alibabab <alibabab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alibaba <alibaba@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 21:17:05 by alibabab          #+#    #+#             */
-/*   Updated: 2025/04/05 00:49:32 by alibabab         ###   ########.fr       */
+/*   Updated: 2025/04/05 11:44:06 by alibaba          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	check_vertical_borders(char **map, t_data *data)
 		j = ft_strlen(map[i]) - 1;
 		while (j >= 0 && ft_isspace(map[i][j]))
 			j--;
-		if (map[i][j] && map[i][j] != '1')
+		if (j >= 0 && map[i][j] && map[i][j] != '1')
 			err_msg("Map must be surrounded by walls\n", data);
 		i++;
 	}
